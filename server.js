@@ -15,6 +15,18 @@ app.set("view engine", "ejs");
 app.get("/guide/packageList",(req,res)=>{
   res.render("guide/packageList")
 })
+app.get("/login",(req,res)=>{
+  res.render("pages/login")
+})
+app.get("/register",(req,res)=>{
+  res.render("pages/register")
+})
+app.get("/passwordforgot",(req,res)=>{
+  res.render("pages/forgotPage")
+})
+app.get("/recoverpassword",(req,res)=>{
+  res.render("pages/recoverpassword")
+})
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
