@@ -1,6 +1,10 @@
 const Guide = require("../model/guide");
+const Package = require("../model/package");
 const bcrypt = require("bcrypt");
 //guide register
+exports.getRegister = (req, res) => {
+  res.render("pages/register");
+};
 exports.postRegister = async (req, res, next) => {
   const gname = req.body.gname;
   const gemail = req.body.gemail;
@@ -78,6 +82,33 @@ exports.getAddPackage = (req, res, next) => {
   });
 };
 
+exports.postAddPackage = (req, res, next) => {
+  const pimage = req.file;
+  if (!pimage) {
+    return res.redirect("/guide/addpackage");
+  }
+  const { pname, pprice, pdesc, pslot, pduration, proutes, pinitary } =
+    req.body;
+  console.log(pname, pprice, pdesc, pslot, pduration, proutes);
+  const p1 = new Package({
+    packageTitle: pname,
+    packagePrice: pprice,
+    packageDescription: pdesc,
+    packageSlot: pslot,
+    packageDuration: pduration,
+    packageRoutes: proutes,
+    packageImage: req.file.filename,
+    packageItinerary: pinitary,
+    packageGuide: req.guide._id,
+  });
+  p1.save((err, p) => {
+    if (err) {
+      console.log(err);
+      return res.redirect("/guide/dashboard");
+    }
+    return res.redirect("/guide/addpackage");
+  });
+};
 exports.getPackageList = (req, res, next) => {
   res.render("guide/packagelist", {
     guide: req.guide,

@@ -5,26 +5,32 @@ const packageSchema = new Schema({
   packageTitle: {
     type: String,
   },
-  packageDiscription: {
+  packageDescription: {
     type: String,
   },
   packageItinerary: {
     type: String,
   },
   packageSlot: {
-    type: String,
+    type: Number,
   },
   packageDuration: {
     type: String,
   },
-  packageRoute: {
-    type: String,
-  },
+  packageRoutes: [
+    {
+      type: String,
+    },
+  ],
   packagePrice: {
     type: String,
   },
   packageImage: {
     type: String,
+  },
+  packageGuide: {
+    type: Schema.Types.ObjectId,
+    ref: "Guide",
   },
 });
 
