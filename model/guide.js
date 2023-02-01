@@ -14,6 +14,12 @@ const guideSchema = new Schema({
   guidePhone: {
     type: String,
   },
+  packages: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Package",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Guide", guideSchema);

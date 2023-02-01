@@ -11,10 +11,12 @@ exports.postRegister = async (req, res, next) => {
   const password = req.body.gpass;
   const confirmPassword = req.body.gpassc;
   if (await Guide.findOne({ guideEmail: gemail })) {
-    return res.redirect("/register", { error: "Email already exists" });
+    return res.redirect("/guide/register", { error: "Email already exists" });
   }
   if (password !== confirmPassword) {
-    return res.redirect("/register", { error: "Password does not match" });
+    return res.redirect("/guide/register", {
+      error: "Password does not match",
+    });
   }
   const hashedPass = await bcrypt.hash(password, 12);
   const guide = new Guide({
@@ -25,9 +27,9 @@ exports.postRegister = async (req, res, next) => {
   guide.save((err, g) => {
     if (err) {
       console.log(err);
-      res.redirect("/register", { error: "Something went wrong" });
+      res.redirect("/guide/register", { error: "Something went wrong" });
     }
-    res.redirect("/login");
+    res.redirect("/guide/login");
   });
 };
 //login
@@ -41,7 +43,7 @@ exports.postLogin = async (req, res, next) => {
   Guide.findOne({ guideEmail: gemail })
     .then((guide) => {
       if (!guide) {
-        return res.redirect("/login");
+        return res.redirect("/guide/login");
       }
       bcrypt
         .compare(gpass, guide.guidePassword)
@@ -53,11 +55,11 @@ exports.postLogin = async (req, res, next) => {
               res.redirect("/guide/dashboard");
             });
           }
-          res.redirect("/login");
+          res.redirect("/guide/login");
         })
         .catch((err) => {
           console.log(err);
-          res.redirect("/login");
+          res.redirect("/guide/login");
         });
     })
     .catch((err) => console.log(err));
@@ -106,11 +108,18 @@ exports.postAddPackage = (req, res, next) => {
       console.log(err);
       return res.redirect("/guide/dashboard");
     }
+    Guide.findById(req.guide._id).then((guide) => {
+      guide.packages.push(p);
+      guide.save();
+    });
     return res.redirect("/guide/addpackage");
   });
 };
 exports.getPackageList = (req, res, next) => {
-  res.render("guide/packagelist", {
-    guide: req.guide,
+  Package.find({ packageGuide: req.guide._id }).then((packages) => {
+    res.render("guide/packagelist", {
+      guide: req.guide,
+      packageList: packages,
+    });
   });
 };

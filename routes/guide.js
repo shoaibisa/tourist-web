@@ -23,6 +23,6 @@ router.get("/packagelist", isLoggedin, guideController.getPackageList);
 router.get("/register", isAuth, guideController.getRegister);
 router.post("/register", guideController.postRegister);
 router.post("/login", guideController.postLogin);
-router.get("/login", guideController.getLogin);
+router.get("/login", isAuth, guideController.getLogin);
 router.post("/logout", guideController.postVlogout);
 module.exports = router;

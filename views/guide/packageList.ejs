@@ -1,117 +1,83 @@
-    <!-- /header -->
-    <%- include("../conn/header.ejs") %>
-    <%- include("../conn/top.ejs") %>
-    <!-- Main Sidebar Container -->
-     <%- include("../conn/navebar.ejs") %>
+<!-- /header -->
+<%- include("../conn/header.ejs") %> <%- include("../conn/top.ejs") %>
+<!-- Main Sidebar Container -->
+<%- include("../conn/navebar.ejs") %>
 
 <!-- Main Start -->
 
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3>All Package List</h3>
-                </div>
-               
-              </div>
-              <!-- /.card -->
-  
-              <div class="card">
-               
-             <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Package name</th>
-                      <th>Package Discription</th>
-                      <th>Route</th>
-                      <th>Price</th>
-                      <th>Image</th>
-                      <th>Start Date</th>
-                      <th>End Date</th>
-                      <th>Sheet</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 4.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td> 4</td>
-                      <td>X</td>
-                      <td>X</td>
-                      <td>X</td>
-                      <td>X</td>
-                      <td>X</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                          Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                        <td>X</td>
-                        <td>X</td>
-                        <td>X</td>
-                        <td>X</td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                          Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                        <td>X</td>
-                        <td>X</td>
-                        <td>X</td>
-                        <td>X</td>
-                      </tr>
-                      <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                          Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>X</td>
-                        <td>X</td>
-                        <td>y</td>
-                        <td>X</td>
-                        <td>X</td>
-                      </tr>
-                  
+  <!-- Content Header (Page header) -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3>All Package List</h3>
+            </div>
+          </div>
+          <!-- /.card -->
+
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Package name</th>
+                    <th>Package Discription</th>
+                    <th>Route</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Sheet</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(packageList.length > 0){ %>
+                  <% for(var i=0; i<packageList.length; i++){ %>
+                  <tr>
+                    <td><%=packageList[i]._id%></td>
+                    <td><%= packageList[i].packageTitle %></td>
+                    <td><%= packageList[i].packageDescription %></td>
+                    <% var routes ="";%>
+                    <% packageList[i].packageRoutes.forEach(pr=>{ %>
+                  <%  routes += pr + ", ";%>
+                 <%   }) %>
+                    <td><%= routes %></td>
+                    <td><%= packageList[i].packagePrice %></td>
+                    <td><img src="/profile/<%= packageList[i].packageImage %>" width="100px" height="100px"></td>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>5</td>
+                  </tr>
+                  <% } %>
+                  <% } else{%>
+                  <tr>
+                    <td colspan="9">No Data Found</td>
+                  </tr>
+                  <% } %>
 
                 </tbody>
-                  </table>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
+              </table>
             </div>
-            <!-- /.col -->
+            <!-- /.card-body -->
           </div>
-          <!-- /.row -->
+          <!-- /.card -->
         </div>
-        <!-- /.container-fluid -->
-      </section>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
 
-    <!-- Main content -->
-   
-    <!-- /.content -->
-  </div>
+  <!-- Main content -->
+
+  <!-- /.content -->
+</div>
 <!-- main End -->
-     <!-- /Footer -->
-     <%- include("../conn/copyright.ejs") %>
-     <%- include("../conn/footer.ejs") %>
+<!-- /Footer -->
+<%- include("../conn/copyright.ejs") %> <%- include("../conn/footer.ejs") %>
