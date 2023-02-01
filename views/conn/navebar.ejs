@@ -17,7 +17,7 @@
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Anubhav Rajput</a>
+          <a href="#" class="d-block"><%=guide.guideName%></a>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -54,7 +54,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/guide/PackageList" class="nav-link">
+                <a href="/guide/packagelist" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Package List</p>
                 </a>
@@ -81,13 +81,19 @@
             </a>
           </li>
           <li class="nav-item">
+            
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+            
               <p>
-                Logout
-                <i class="fas fa-angle-left right"></i>
+                <form action="/guide/logout" method="post">
+                  <i class="nav-icon fas fa-table"></i>
+      
+                  <button type="submit" ><p>Logout</p></button>
+                </form>
+                
               </p>
             </a>
+       
           </li>
         </ul>
       </nav>
