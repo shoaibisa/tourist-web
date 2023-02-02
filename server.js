@@ -62,6 +62,15 @@ app.get("/recoverpassword", (req, res) => {
   res.render("pages/recoverpassword");
 });
 app.use("/guide", guideRoute);
+
+app.get("/404",(req,res)=>{
+  res.render("pages/error404")
+})
+app.get("/profile",(req,res)=>{
+  res.render("pages/profile")
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
