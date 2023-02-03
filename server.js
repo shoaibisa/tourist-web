@@ -52,7 +52,7 @@ app.use((req, res, next) => {
   next();
 });
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("pages/landingPage");
 });
 
 app.get("/passwordforgot", (req, res) => {
@@ -67,7 +67,13 @@ app.get("/404",(req,res)=>{
   res.render("pages/error404")
 })
 app.get("/profile",(req,res)=>{
-  res.render("pages/profile")
+  res.render("pages/profile",{guide:req.guide})
+})
+app.get("/basicDetails",(req,res)=>{
+  res.render("pages/basicdetails",{guide:req.guide})
+})
+app.get("/feq",(req,res)=>{
+  res.render("pages/feq",{guide:req.guide})
 })
 
 app.listen(PORT, () => {

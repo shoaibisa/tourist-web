@@ -38,9 +38,9 @@
                 </thead>
                 <tbody>
                   <% if(packageList.length > 0){ %>
-                  <% for(var i=0; i<packageList.length; i++){ %>
+                  <% for(var i=0; i<packageList.length; i++){  %>
                   <tr>
-                    <td><%=packageList[i]._id%></td>
+                    <td><%=i %></td>
                     <td><%= packageList[i].packageTitle %></td>
                     <td><%= packageList[i].packageDescription %></td>
                     <% var routes ="";%>
@@ -53,7 +53,16 @@
                     <td>6</td>
                     <td>4</td>
                     <td>5</td>
-                    <td>Edit View Delete</td>
+                    <td>
+                      <div style="display: flex;">
+                        <button type="button" class="btn btn-block bg-gradient-success m-2" >view</button>
+                        <button type="button" class="btn btn-block bg-gradient-warning m-2">Edit</button>
+                        <button type="button" class="btn btn-block bg-gradient-danger m-2">Delete</button>
+                      </div>
+                     
+
+
+                    </td>
                   </tr>
                   <% } %>
                   <% } else{%>
