@@ -93,7 +93,7 @@ exports.postAddPackage = (req, res, next) => {
   }
   const { pname, pprice, pdesc, pslot, pduration, proutes, pinitary } =
     req.body;
-  console.log(pname, pprice, pdesc, pslot, pduration, proutes);
+
   const p1 = new Package({
     packageTitle: pname,
     packagePrice: pprice,
@@ -150,4 +150,8 @@ exports.deletePackage = async (req, res, next) => {
       console.log(err);
     });
   res.redirect("/guide/packagelist");
+};
+
+exports.editePackage = (req, res, next) => {
+  const pId = req.params.pId;
 };
