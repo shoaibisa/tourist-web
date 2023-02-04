@@ -1,6 +1,8 @@
 const Guide = require("../model/guide");
 const Package = require("../model/package");
 const bcrypt = require("bcrypt");
+const fs = require("fs");
+const fileHelper = require("../util/file");
 //guide register
 exports.getRegister = (req, res) => {
   res.render("pages/register");
@@ -112,7 +114,7 @@ exports.postAddPackage = (req, res, next) => {
       guide.packages.push(p);
       guide.save();
     });
-    return res.redirect("/guide/addpackage");
+    return res.redirect("/guide/packagelist");
   });
 };
 exports.getPackageList = (req, res, next) => {
@@ -122,4 +124,30 @@ exports.getPackageList = (req, res, next) => {
       packageList: packages,
     });
   });
+};
+
+exports.deletePackage = async (req, res, next) => {
+  const pId = req.body.pId;
+
+  await Package.findByIdAndRemove(pId)
+    .then(async (package) => {
+      if (!package) {
+        throw "Not found";
+      }
+      if (package.packageGuide.equals(req.guide._id)) {
+        const g = await Guide.findByIdAndUpdate(req.guide._id, {
+          $pull: { packages: package._id },
+        });
+        const pathImg = "upload/images" + package.packageImage;
+        if (fs.existsSync(pathImg)) {
+          fileHelper.deleteFiles(pathImg);
+        }
+      } else {
+        console.log("You are not allowed!");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  res.redirect("/guide/packagelist");
 };

@@ -18,7 +18,7 @@ router.post(
   guideController.postAddPackage
 );
 router.get("/packagelist", isLoggedin, guideController.getPackageList);
-
+router.post("/delete", isLoggedin, guideController.deletePackage);
 //register
 router.get("/register", isAuth, guideController.getRegister);
 router.post("/register", guideController.postRegister);
