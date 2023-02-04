@@ -138,7 +138,7 @@ exports.deletePackage = async (req, res, next) => {
         const g = await Guide.findByIdAndUpdate(req.guide._id, {
           $pull: { packages: package._id },
         });
-        const pathImg = "upload/images" + package.packageImage;
+        const pathImg = "upload/images/" + package.packageImage;
         if (fs.existsSync(pathImg)) {
           fileHelper.deleteFiles(pathImg);
         }
