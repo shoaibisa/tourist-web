@@ -12,7 +12,7 @@
         <div class="col-sm-8">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Add Package</h3>
+              <h3 class="card-title">Update Package</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -30,6 +30,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter ..."
+                        value="<%= package.packageTitle %>"
                         name="pname"
                       />
                     </div>
@@ -40,7 +41,12 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Package Description</label>
-                      <textarea name="pdesc" rows="5" cols="100"></textarea>
+                      <textarea
+                        name="pdesc"
+                        rows="5"
+                        cols="100"
+                        value="<%= package.packageDescription %> "
+                      ></textarea>
                     </div>
                   </div>
                 </div>
@@ -50,7 +56,13 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Tour Itinerary</label>
-                      <textarea rows="5" cols="100" name="pinitary"></textarea>
+                      <textarea
+                        name="pitinerary"
+                        rows="5"
+                        cols="100"
+                        name="pinitary"
+                        value="<%= package.packageItinerary %> "
+                      ></textarea>
                     </div>
                   </div>
                 </div>
@@ -65,6 +77,7 @@
                         class="form-control"
                         placeholder="Enter ..."
                         name="pslot"
+                        value="<%= package.packageSlot %> "
                       />
                     </div>
                   </div>
@@ -106,6 +119,7 @@
                         class="form-control"
                         placeholder="Enter ..."
                         name="pduration"
+                        value="<%= package.packageDuration %> "
                       />
                     </div>
                   </div>

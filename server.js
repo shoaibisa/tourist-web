@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const MongoDBstore = require("connect-mongodb-session")(session);
 const PORT = 5000;
-
+require("dotenv").config();
 //model
 const Guide = require("./model/guide");
 
@@ -19,6 +19,8 @@ const oSessionStore = new MongoDBstore({
 });
 //routes
 const guideRoute = require("./routes/guide");
+const adminRoute = require("./routes/admin");
+const publicRoute = require("./routes/publicCon");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -51,10 +53,23 @@ app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
   next();
 });
-app.get("/", (req, res) => {
-  res.render("pages/landingPage");
-});
 
+//admin login
+app.use((req, res, next) => {
+  if (!req.session.admin) {
+    return next();
+  }
+  req.admin = {
+    adminname: process.env.ADMIN_ID,
+    adminpass: process.env.ADMIN_PASS,
+  };
+  next();
+});
+app.use((req, res, next) => {
+  res.locals.isAdminAuthenticated = req.session.isAdminLoggedIn;
+  next();
+});
+app.use(publicRoute);
 app.get("/passwordforgot", (req, res) => {
   res.render("pages/forgotPage");
 });
@@ -62,21 +77,21 @@ app.get("/recoverpassword", (req, res) => {
   res.render("pages/recoverpassword");
 });
 app.use("/guide", guideRoute);
+app.use("/admin", adminRoute);
 
-app.get("/404",(req,res)=>{
-  res.render("pages/error404")
-})
-app.get("/profile",(req,res)=>{
-  res.render("pages/profile",{guide:req.guide})
-})
-app.get("/basicDetails",(req,res)=>{
-  res.render("pages/basicdetails",{guide:req.guide})
-})
-app.get("/feq",(req,res)=>{
-  res.render("pages/feq",{guide:req.guide})
-})
+app.get("/404", (req, res) => {
+  res.render("pages/error404");
+});
+app.get("/profile", (req, res) => {
+  res.render("pages/profile", { guide: req.guide });
+});
+app.get("/basicDetails", (req, res) => {
+  res.render("pages/basicdetails", { guide: req.guide });
+});
+app.get("/feq", (req, res) => {
+  res.render("pages/feq", { guide: req.guide });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
