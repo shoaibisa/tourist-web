@@ -70,6 +70,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(publicRoute);
+
 app.get("/passwordforgot", (req, res) => {
   res.render("pages/forgotPage");
 });
@@ -78,6 +79,7 @@ app.get("/recoverpassword", (req, res) => {
 });
 app.use("/guide", guideRoute);
 app.use("/admin", adminRoute);
+
 
 app.get("/404", (req, res) => {
   res.render("pages/error404");
@@ -98,8 +100,22 @@ app.get("/blog", (req, res) => {
 app.get("/bloglist", (req, res) => {
   res.render("pages/blogList", { guide: req.guide});
 });
+
 app.get("/mainblog", (req, res) => {
   res.render("pages/mainblog", { guide: req.guide});
+});
+
+app.get("/tourist", (req, res) => {
+  res.render("tourist/profile", { guide: req.guide});
+});
+app.get("/tourist/login", (req, res) => {
+  res.render("tourist/login", { guide: req.guide});
+});
+app.get("/tourist/register", (req, res) => {
+  res.render("tourist/register", { guide: req.guide});
+});
+app.get("/tourist/bookedPackage", (req, res) => {
+  res.render("tourist/bookedPackage", { guide: req.guide});
 });
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
