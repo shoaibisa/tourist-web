@@ -92,6 +92,15 @@ app.get("/feq", (req, res) => {
   res.render("pages/feq", { guide: req.guide });
 });
 
+app.get("/blog", (req, res) => {
+  res.render("pages/addBlog", { guide: req.guide});
+});
+app.get("/bloglist", (req, res) => {
+  res.render("pages/blogList", { guide: req.guide});
+});
+app.get("/mainblog", (req, res) => {
+  res.render("pages/mainblog", { guide: req.guide});
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
