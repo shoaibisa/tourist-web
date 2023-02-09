@@ -79,9 +79,6 @@ app.get("/recoverpassword", (req, res) => {
 app.use("/guide", guideRoute);
 app.use("/admin", adminRoute);
 
-app.get("/404", (req, res) => {
-  res.render("pages/error404");
-});
 app.get("/profile", (req, res) => {
   res.render("pages/profile", { guide: req.guide });
 });
@@ -93,13 +90,16 @@ app.get("/feq", (req, res) => {
 });
 
 app.get("/blog", (req, res) => {
-  res.render("pages/addBlog", { guide: req.guide});
+  res.render("pages/addBlog", { guide: req.guide });
 });
 app.get("/bloglist", (req, res) => {
-  res.render("pages/blogList", { guide: req.guide});
+  res.render("pages/blogList", { guide: req.guide });
 });
 app.get("/mainblog", (req, res) => {
-  res.render("pages/mainblog", { guide: req.guide});
+  res.render("pages/mainblog", { guide: req.guide });
+});
+app.use((req, res) => {
+  res.status(404).render("pages/error404");
 });
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
