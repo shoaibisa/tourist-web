@@ -1,6 +1,7 @@
 const Guide = require("../model/guide");
 const Package = require("../model/package");
 const bcrypt = require("bcrypt");
+const Blog = require("../model/blog");
 const fs = require("fs");
 const fileHelper = require("../util/file");
 //guide register
@@ -154,4 +155,22 @@ exports.deletePackage = async (req, res, next) => {
 
 exports.editePackage = (req, res, next) => {
   const pId = req.params.pId;
+};
+
+//blogs
+exports.getAddBlog = (req, res, next) => {
+  res.render("guide/addBlog", {
+    guide: req.guide,
+  });
+};
+exports.getBlogList = (req, res, next) => {
+  const guide = req.guide;
+  // return console.log(guide);
+  Blog.find({ blogAuthor: guide._id }).then((blogs) => {
+    // return console.log(blogs);
+    res.render("guide/bloglist", {
+      guide: guide,
+      blogs: blogs,
+    });
+  });
 };

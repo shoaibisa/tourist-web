@@ -9,9 +9,11 @@ const blogSchema = new Schema(
     blogContent: {
       type: String,
     },
-    blogTag: {
-      type: String,
-    },
+    blogTag: [
+      {
+        type: String,
+      },
+    ],
     blogViews: {
       type: Number,
       default: 0,

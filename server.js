@@ -21,6 +21,7 @@ const oSessionStore = new MongoDBstore({
 const guideRoute = require("./routes/guide");
 const adminRoute = require("./routes/admin");
 const publicRoute = require("./routes/publicCon");
+const blogRoute = require("./routes/blog");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -78,6 +79,7 @@ app.get("/recoverpassword", (req, res) => {
 });
 app.use("/guide", guideRoute);
 app.use("/admin", adminRoute);
+app.use(blogRoute);
 
 app.get("/profile", (req, res) => {
   res.render("pages/profile", { guide: req.guide });
@@ -89,12 +91,6 @@ app.get("/feq", (req, res) => {
   res.render("pages/feq", { guide: req.guide });
 });
 
-app.get("/blog", (req, res) => {
-  res.render("pages/addBlog", { guide: req.guide });
-});
-app.get("/bloglist", (req, res) => {
-  res.render("pages/blogList", { guide: req.guide });
-});
 app.get("/mainblog", (req, res) => {
   res.render("pages/mainblog", { guide: req.guide });
 });

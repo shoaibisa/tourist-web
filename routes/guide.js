@@ -25,4 +25,8 @@ router.post("/register", guideController.postRegister);
 router.post("/login", guideController.postLogin);
 router.get("/login", isAuth, guideController.getLogin);
 router.post("/logout", guideController.postVlogout);
+
+router.get("/addblog", isLoggedin, guideController.getAddBlog);
+router.get("/bloglist", isLoggedin, guideController.getBlogList);
+
 module.exports = router;

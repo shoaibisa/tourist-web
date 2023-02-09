@@ -15,6 +15,12 @@ const guideSchema = new Schema(
     guidePhone: {
       type: String,
     },
+    blogs: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Blog",
+      },
+    ],
     packages: [
       {
         type: Schema.Types.ObjectId,

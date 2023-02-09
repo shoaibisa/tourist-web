@@ -1,0 +1,96 @@
+<!-- /header -->
+<%- include("../conn/header.ejs") %> <%- include("../conn/top.ejs") %>
+<!-- Main Sidebar Container -->
+<%- include("../conn/navebar.ejs") %>
+
+<div class="content-wrapper">
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add Blog</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form
+                action="/guide/addblog"
+                enctype="multipart/form-data"
+                method="post"
+              >
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label"
+                    >Blog Title</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    placeholder="Enter the Blog Title"
+                    name="btitle"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label"
+                    >Discription</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="Discription"
+                    rows="3"
+                    name="bdesc"
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">Blog Image</label>
+                  <input
+                    class="form-control"
+                    type="file"
+                    id="blogImage1"
+                    name="bimage"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label"
+                    >Add Tages</label
+                  >
+                  <select
+                    id="choices-multiple-remove-button"
+                    placeholder="Select upto 10 tags"
+                    multiple
+                    name="btags"
+                  >
+                    <option value="HTML"></option>
+                    <option value="Jquery">Jquery</option>
+                    <option value="CSS">CSS</option>
+                    <option value="Bootstrap 3">Bootstrap 3</option>
+                    <option value="Bootstrap 4">Bootstrap 4</option>
+                    <option value="Java">Java</option>
+                    <option value="Javascript">Javascript</option>
+                    <option value="Angular">Angular</option>
+                    <option value="Python">Python</option>
+                    <option value="Hybris">Hybris</option>
+                    <option value="SQL">SQL</option>
+                    <option value="NOSQL">NOSQL</option>
+                    <option value="NodeJS">NodeJS</option>
+                  </select>
+                </div>
+                <div class="submit-btn">
+                  <button type="submit" class="btn btn-primary">
+                    Add Blog
+                  </button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+</div>
+<%- include("../conn/copyright.ejs") %> <%- include("../conn/footer.ejs") %>
