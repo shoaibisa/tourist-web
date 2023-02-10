@@ -101,6 +101,9 @@ app.get("/singleblog", (req, res) => {
 app.get("/blogrequest", (req, res) => {
   res.render("admin/blogRequest", { admin: req.admin });
 });
+app.get("/packagerequest", (req, res) => {
+  res.render("admin/packageRequest", { admin: req.admin });
+});
 
 
 app.use((req, res) => {
