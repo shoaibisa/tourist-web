@@ -87,24 +87,9 @@ app.get("/profile", (req, res) => {
 app.get("/basicDetails", (req, res) => {
   res.render("pages/basicdetails", { guide: req.guide });
 });
-app.get("/feq", (req, res) => {
+app.get("/faq", (req, res) => {
   res.render("pages/feq", { guide: req.guide });
 });
-
-app.get("/mainblog", (req, res) => {
-  res.render("guide/mainblog", { guide: req.guide });
-});
-app.get("/singleblog", (req, res) => {
-  res.render("guide/singleblog", { guide: req.guide });
-});
-
-app.get("/blogrequest", (req, res) => {
-  res.render("admin/blogRequest", { admin: req.admin });
-});
-app.get("/packagerequest", (req, res) => {
-  res.render("admin/packageRequest", { admin: req.admin });
-});
-
 
 app.use((req, res) => {
   res.status(404).render("pages/error404");

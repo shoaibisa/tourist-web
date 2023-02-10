@@ -29,6 +29,10 @@ const blogSchema = new Schema(
       type: Number,
       default: 0,
     },
+    status: {
+      type: String,
+      default: "pending",
+    },
     comments: [
       {
         type: Schema.Types.ObjectId,

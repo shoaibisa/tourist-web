@@ -14,4 +14,13 @@ router.post(
   isAdminLoggedin,
   adminConroller.postAddCarousel
 );
+
+//blogs
+
+router.get("/blogs", isAdminLoggedin, adminConroller.getBlogs);
+router.post("/blog/approve", isAdminLoggedin, adminConroller.approveBlog);
+router.post("/blog/abort", isAdminLoggedin, adminConroller.abortBlog);
+
+//packages
+router.get("/packages", isAdminLoggedin, adminConroller.getPackages);
 module.exports = router;
