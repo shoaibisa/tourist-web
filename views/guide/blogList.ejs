@@ -43,7 +43,8 @@
                     <td><%=i+1 %></td>
                     <td><%= blogs[i].blogTitle %></td>
                     <td>
-                      <%= blogs[i].blogContent %>
+                      
+                      <%=blogs[i].blogContent.substring(0, 200) %>
                     </td>
                     <% var tags =""; %>
                     <% blogs[i].blogTag.forEach(bt=>{ %>

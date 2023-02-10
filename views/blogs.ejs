@@ -151,17 +151,18 @@
           />
         </div>
         <div class="card__body blogcard_body">
+           <div class="alltegs"  style="display: flex;">
           <%if(blogs[0].blogTag.length>0){ %>
             <% for(var t =0; t<blogs[0].blogTag.length;t++){ %>
-          <span class="blog_tag tag-blue" style="display: flex"><%=blogs[0].blogTag[t]  %></span>
+          <span class="blog_tag tag-blue mr-2"  style="display: flex"><%=blogs[0].blogTag[t]  %></span>
             <% } %>
           <% }else{ %>
           <span class="blog_tag tag-red">Latest</span>
           <% } %>
+        </div>
           <h4><%=blogs[0].blogTitle %></h4>
           <p>
-
-            <%=blogs[0].blogContent %>
+            <%=blogs[0].blogContent.substring(0, 200) %>...
           </p>
         </div>
       </div>
@@ -182,17 +183,18 @@
             />
           </div>
           <div class="card__body blogcard_body">
-
+            <div class="alltegs"  style="display: flex;">
              <%if(blogs[i].blogTag.length>0){ %>
             <% for(var t =0; t<blogs[i].blogTag.length;t++){ %>
-          <span class="blog_tag tag-blue" style="display: flex"><%=blogs[0].blogTag[t]  %></span>
+          <span class="blog_tag tag-blue mr-2" style="display: flex"><%=blogs[0].blogTag[t]  %></span>
             <% } %>
           <% }else{ %>
           <span class="blog_tag tag-red">Latest</span>
           <% } %>
+            </div>
             <h5><%=blogs[i].blogTitle %></h5>
             <p>
-              <%=blogs[i].blogContent %>
+              <%=blogs[i].blogContent.substring(0, 200) %>...
             </p>
           </div>
           <div class="info mb-3" style="display: flex; padding: 0.7rem">

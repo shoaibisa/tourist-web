@@ -169,7 +169,7 @@
             on <%=dates %> by <b><%=blog.blogAuthor.guideName %></b>
           </div>
           <!-- Post categories-->
-          <%if(blog.blogTag>0){%>
+          <%if(blog.blogTag.length>0){ %>
             <% for(var i=0;i<blog.blogTag.length;i++){%>
               <a
                 class="badge bg-secondary text-decoration-none link-light"
@@ -205,10 +205,9 @@
         <div class="col-lg-9">
           <div class="blog__details__tags">
             <span>Tag</span>
-            <a style="text-decoration: none" href="#">Food</a>
-            <a style="text-decoration: none" href="#">Material</a>
-            <a style="text-decoration: none" href="#">Cakes</a>
-            <a style="text-decoration: none" href="#">Baking</a>
+            <% for(var i=0;i<blog.blogTag.length;i++){%>
+              <a style="text-decoration: none" href="/blog/tag/<%=blog.blogTag[i]%>"><%=blog.blogTag[i]%></a>
+              <%}%>
           </div>
         </div>
         <div class="col-lg-3 blog__details__tags" style="display: flex">
