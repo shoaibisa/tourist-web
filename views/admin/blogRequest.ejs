@@ -1,0 +1,76 @@
+<%- include("../conn/header.ejs") %> <%- include("../conn/top.ejs") %>
+<!-- Main Sidebar Container -->
+<%- include("./navbar.ejs") %>
+
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3>Package</h3>
+            </div>
+          </div>
+          <!-- /.card -->
+
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Blog Name</th>
+                    <th>Posted By</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>View</th>
+                    <th>Action</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                  <tr>
+                    <td>1</td>
+                    <td>ABCD</td>
+                    <td>Anubhav Raj</td>
+                    <td>12/01/2012</td>
+                    <td> <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >inProcess</button></td>
+                    <td>
+                      <div style="display: flex; ">
+                        <button   style=" border: none;"type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >View</button>
+                      </div>
+                    </td>
+                    <td>
+                        <div style="display: flex;justify-content: space-evenly; ">
+                             <div class=" mr-3">  <button  style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-success  text-white "  > Approved</button></div>
+                              <div><button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-danger  text-white" > DisApproved</button>
+                              </div>
+                          </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+
+  <!-- /.content -->
+</div>
+<!-- main End -->
+<!-- /Footer -->
+<%- include("../conn/copyright.ejs") %> 
+<%- include("../conn/footer.ejs") %>

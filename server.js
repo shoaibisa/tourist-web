@@ -98,6 +98,10 @@ app.get("/singleblog", (req, res) => {
   res.render("guide/singleblog", { guide: req.guide });
 });
 
+app.get("/blogrequest", (req, res) => {
+  res.render("admin/blogRequest", { admin: req.admin });
+});
+
 
 app.use((req, res) => {
   res.status(404).render("pages/error404");
