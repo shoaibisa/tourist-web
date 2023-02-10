@@ -2,6 +2,102 @@
 <!-- Nav Bar Start -->
 <%- include("../frontviewComm/navbar.ejs") %>
 <!-- NavBar  End -->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+
+.img_blog {
+max-width: 100%;
+display: block;
+object-fit: cover;
+}
+
+.blog_card {
+display: flex;
+flex-direction: column;
+width: clamp(19rem, calc(19rem + 2vw), 19rem);
+overflow: hidden;
+box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+border-radius: 1em;
+background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+}
+.blog_card1 {
+display: flex;
+flex-direction: column;
+
+overflow: hidden;
+box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+border-radius: 1em;
+background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+}
+
+
+
+
+.blogcard_body {
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: .5rem;
+}
+
+
+.blog_tag {
+align-self: flex-start;
+padding: .25em .75em;
+border-radius: 1em;
+font-size: .75rem;
+}
+.readmore{
+border-radius: 0.5em;
+font-size: .45rem;
+}
+.tag + .tag {
+margin-left: .5em;
+}
+
+
+.tag-red {
+background: #cb2d3e;
+background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+color: #fafafa;
+}
+.tag-blue {
+background: #087df3;
+color: #fafafa;
+}
+a{
+text-decoration: none;
+ outline:  none;
+}
+
+.blogcard_body h4 {
+font-size: 1.5rem;
+text-transform: capitalize;
+}
+
+.blog_footer {
+display: flex;
+padding: 0.3rem;
+margin-top: auto;
+}
+
+.user_blog {
+display: flex;
+gap: .5rem;
+}
+
+.user__image_blog {
+border-radius: 50%;
+}
+
+.user__info_blog > small {
+color: #666;
+}
+</style>
 <!-- slider start -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
@@ -62,21 +158,25 @@
 <!-- Teranding Package Start  -->
 <div class="container-fulid">
   <div class="album">
-    <div class="container">
+    <div class="container " style="max-width: 1400px;" >
       <h1 class="m-3">Treanding Package</h1>
       <div class="row">
         <% for(var i=0; i<10; i++){ %>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img
-              src="https://www.irctctourism.com/packageImage/home_page_image/N_360x233.webp"
-              alt=""
-            />
-            <div class="card-body">
-              <h6>North Indian Package</h6>
-            </div>
+        <!-- Blog Card Strat -->
+        <div class="card blog_card m-3 p-3 ">
+          <div class="card__header blog_header">
+          <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image img_blog" width="600">
           </div>
-        </div>
+          <div class="card__body blogcard_body">
+          <span class="blog_tag tag-red">Technology</span>
+          <h5>What's new in 2022 Tech</h5>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+          </div>
+           <div class="blog_tag tag-blue text-white">
+             Read More
+           </div>              
+      </div>
+       <!-- Blog Card End -->
         <% } %>
       </div>
     </div>

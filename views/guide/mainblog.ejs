@@ -1,0 +1,251 @@
+<%- include("../conn/header.ejs") %>
+ <style>
+    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+
+.img_blog {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.blog_card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(19rem, calc(19rem + 2vw), 19rem);
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+}
+.blog_card1 {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+}
+
+
+
+
+.blogcard_body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+
+.blog_tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+.readmore{
+  border-radius: 0.5em;
+  font-size: .45rem;
+}
+.tag + .tag {
+  margin-left: .5em;
+}
+
+
+.tag-red {
+  background: #cb2d3e;
+background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  color: #fafafa;
+}
+.tag-blue {
+  background: #087df3;
+  color: #fafafa;
+}
+a{
+  text-decoration: none;
+   outline:  none;
+}
+
+.blogcard_body h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.blog_footer {
+  display: flex;
+  padding: 0.3rem;
+  margin-top: auto;
+}
+
+.user_blog {
+  display: flex;
+  gap: .5rem;
+}
+
+.user__image_blog {
+  border-radius: 50%;
+}
+
+.user__info_blog > small {
+  color: #666;
+}
+
+.info  li {
+  list-style: none;
+  font-size: 12px;
+  color: #888888;
+  display: inline-block;
+  margin-right: 20px;
+  position: relative;
+}
+
+
+
+.blog__sidebar__item {
+  margin-bottom: 65px;
+}
+.blog__sidebar__item:last-child {
+  margin-bottom: 0;
+}
+.blog__sidebar__item h5 {
+  font-size: 16px;
+    color: #111111;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 25px;
+
+}
+.blog__sidebar__item h5:before {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  height: 14px;
+  width: 10px;
+  background: rgba(63, 112, 238, 0.3);
+  content: "";
+}
+
+ </style>
+<!-- Nav Bar Start -->
+<%- include("../frontviewComm/navbar.ejs") %>
+<!-- NavBar  End -->
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="fw-bolder">Welcome to Treval World</h1>
+        </div>
+    </div>
+</header>
+<!--  All Blog Body -->
+<div class="container" style="max-width: 1400px;">
+     <div class="row">
+          <div class="col-lg-9">
+               
+                <div class="card blog_card1 ">
+                    <div class="card__header blog_header">
+                    <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image img_blog" width="1200"  height="300">
+                    </div>
+                    <div class="card__body blogcard_body">
+                    <span class="blog_tag tag-blue">Technology</span>
+                    <h4>What's new in 2022 Tech</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+                    </div>
+                </div>
+
+                <div class="row ml-2" >
+                  <% for(var i=0; i<4; i++){ %>
+                <!-- Blog Card Strat -->
+                
+                <div class="card blog_card m-2 p-2 ">
+                    <div class="card__header blog_header">
+                    <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image img_blog" width="600">
+                    </div>
+                    <div class="card__body blogcard_body">
+                    <span class="blog_tag tag-red">Technology</span>
+                    <h5>What's new in 2022 Tech</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+                    </div>
+                     <div class="info mb-3 "  style="display: flex; padding: 0.7rem;">
+                     
+                        <li  style="list-style: none;">By <span>James Myers</span></li>
+                        <li style="list-style: none;">13 Nov 2020</li>
+                        <li style="list-style: none;">112 Views</li>
+                  
+
+                     </div>
+                      
+                     <a href="/singleblog" style="outline: none; text-decoration: none;" class="blog_tag tag-blue text-white">
+                    
+                 
+                     Read more
+                        
+                    </a>        
+                </div>
+                 <!-- Blog Card End -->
+                 <% } %>
+                </div>
+
+         </div>
+
+           <div class="col-lg-3">
+            <div class="card mb-4">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
+                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+              <div class="card-header">Categories</div>
+              <div class="card-body">
+                  <div class="row">
+                    <% for(var i=0; i<6; i++){ %>
+                    <a href="#!"> <div class="blog_tag tag-blue  m-2  text-center">
+                      Tourist
+                   </div>  </a>
+                   <% } %>
+                  </div>
+              </div>
+          </div>
+          <div class="blog__sidebar__item">
+            <h5>Popular posts</h5>
+            <% for(var i=0; i<4; i++){ %>
+           <div class="blog__sidebar__recent mb-4" style="display: flex;  ">
+             
+                <!-- <a href="#" class="blog__sidebar__recent__item"  style="text-decoration: none;"> -->
+                    <div class="blog__sidebar__recent__item__pic mr-5 ">
+                       
+                        <a href="http://">
+                          <img src="https://source.unsplash.com/90x90/?treval" alt="">
+                        </a>
+                    </div>
+                    <div class="blog__sidebar__recent__item__text">
+                      <a href="http://" style="text-decoration: none;">
+                        <h5>Secret To Cooking Vegetables</h5>
+                        <span>13 Nov 2020</span>
+                        </a>
+                    </div>
+                <!-- </a> -->
+              
+                
+            </div>
+            <% } %>
+        </div>
+           </div>
+     </div>
+</div>
+<!--  All Blog Body -->
+
+
+<!-- Footer Start -->
+<%- include("../frontviewComm/footer.ejs") %>
+<!-- Footer End -->

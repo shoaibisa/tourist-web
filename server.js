@@ -92,8 +92,13 @@ app.get("/feq", (req, res) => {
 });
 
 app.get("/mainblog", (req, res) => {
-  res.render("pages/mainblog", { guide: req.guide });
+  res.render("guide/mainblog", { guide: req.guide });
 });
+app.get("/singleblog", (req, res) => {
+  res.render("guide/singleblog", { guide: req.guide });
+});
+
+
 app.use((req, res) => {
   res.status(404).render("pages/error404");
 });
