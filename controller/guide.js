@@ -78,12 +78,14 @@ exports.postVlogout = (req, res) => {
 exports.getGuideDashboard = (req, res, next) => {
   res.render("dashboard", {
     guide: req.guide,
+    profileImage: req.guide.guideImage,
   });
 };
 
 exports.getAddPackage = (req, res, next) => {
   res.render("guide/addPackage", {
     guide: req.guide,
+    profileImage: req.guide.guideImage,
   });
 };
 
@@ -123,6 +125,7 @@ exports.getPackageList = (req, res, next) => {
     res.render("guide/packagelist", {
       guide: req.guide,
       packageList: packages,
+      profileImage: req.guide.guideImage,
     });
   });
 };
@@ -161,6 +164,7 @@ exports.editePackage = (req, res, next) => {
 exports.getAddBlog = (req, res, next) => {
   res.render("guide/addBlog", {
     guide: req.guide,
+    profileImage: req.guide.guideImage,
   });
 };
 exports.getBlogList = (req, res, next) => {
@@ -171,6 +175,7 @@ exports.getBlogList = (req, res, next) => {
     res.render("guide/bloglist", {
       guide: guide,
       blogs: blogs,
+      profileImage: req.guide.guideImage,
     });
   });
 };

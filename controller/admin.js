@@ -1,9 +1,11 @@
 require("dotenv").config();
 const Blog = require("../model/blog");
 const Package = require("../model/package");
+const MainPage = require("../model/mainpage");
 exports.getDashboard = (req, res, next) => {
   res.render("admin/dashboard", {
     admin: req.admin,
+    profileImage: false,
   });
 };
 exports.getLogin = (req, res, next) => {
@@ -26,6 +28,7 @@ exports.postLogin = (req, res, next) => {
 exports.getAddCarousel = (req, res, next) => {
   res.render("admin/addheaderimage", {
     admin: req.admin,
+    profileImage: false,
   });
 };
 exports.postAddCarousel = (req, res, next) => {
@@ -55,6 +58,7 @@ exports.getBlogs = (req, res, next) => {
       res.render("admin/blogs", {
         admin: req.admin,
         blogs: blogs,
+        profileImage: false,
       });
     });
 };
@@ -68,6 +72,7 @@ exports.getPackages = (req, res, next) => {
       res.render("admin/packages", {
         admin: req.admin,
         packages: packages,
+        profileImage: false,
       });
     });
 };

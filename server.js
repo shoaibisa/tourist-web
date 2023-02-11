@@ -7,6 +7,7 @@ const PORT = 5000;
 require("dotenv").config();
 //model
 const Guide = require("./model/guide");
+const Tourist = require("./model/tourist");
 
 const dbUrl = "mongodb://0.0.0.0:27017/tourist";
 const app = express();
@@ -15,11 +16,13 @@ const app = express();
 const oSessionStore = new MongoDBstore({
   //calling constructor
   uri: dbUrl,
-  collection: "guidesession",
+  collection: "usersessions",
 });
+
 //routes
 const guideRoute = require("./routes/guide");
 const adminRoute = require("./routes/admin");
+const touristRoute = require("./routes/tourist");
 const publicRoute = require("./routes/publicCon");
 const blogRoute = require("./routes/blog");
 
@@ -28,7 +31,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use("/profile", express.static("upload/images"));
-//session setup
+//session setup for guide
 app.use(
   session({
     secret: "Guide and Tourist is awsome",
@@ -38,6 +41,7 @@ app.use(
   })
 );
 
+//guide store
 app.use((req, res, next) => {
   if (!req.session.guide) {
     return next();
@@ -45,6 +49,7 @@ app.use((req, res, next) => {
   Guide.findById(req.session.guide._id)
     .then((guide) => {
       req.guide = guide;
+      req.isGuideAuth = true;
       next();
     })
     .catch((err) => console.log(err));
@@ -52,6 +57,25 @@ app.use((req, res, next) => {
 //local variable
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
+  next();
+});
+
+//tourist session
+app.use((req, res, next) => {
+  if (!req.session.tourist) {
+    return next();
+  }
+  Tourist.findById(req.session.tourist._id)
+    .then((tourist) => {
+      req.tourist = tourist;
+      req.isTouristAuth = true;
+      next();
+    })
+    .catch((err) => console.log(err));
+});
+//local variable for tourist
+app.use((req, res, next) => {
+  res.locals.isTouristAuthenticated = req.session.isTouristLoggedIn;
   next();
 });
 
@@ -70,6 +94,7 @@ app.use((req, res, next) => {
   res.locals.isAdminAuthenticated = req.session.isAdminLoggedIn;
   next();
 });
+
 app.use(publicRoute);
 app.get("/passwordforgot", (req, res) => {
   res.render("pages/forgotPage");
@@ -79,6 +104,7 @@ app.get("/recoverpassword", (req, res) => {
 });
 app.use("/guide", guideRoute);
 app.use("/admin", adminRoute);
+app.use("/tourist", touristRoute);
 app.use(blogRoute);
 
 app.get("/profile", (req, res) => {

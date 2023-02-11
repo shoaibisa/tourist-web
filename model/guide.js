@@ -15,6 +15,13 @@ const guideSchema = new Schema(
     guidePhone: {
       type: String,
     },
+    guideImage: {
+      type: String,
+    },
+    profileComplete: {
+      type: Boolean,
+      default: false,
+    },
     blogs: [
       {
         type: Schema.Types.ObjectId,
