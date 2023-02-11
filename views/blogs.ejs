@@ -164,7 +164,15 @@
           <p>
             <%=blogs[0].blogContent.substring(0, 200) %>...
           </p>
+          <a
+        href="/blog/<%=blogs[0]._id %>"
+        style="outline: none; text-decoration: none"
+        class="blog_tag tag-blue text-white"
+      >
+        Read more
+      </a>
         </div>
+        
       </div>
       <% if(blogs.length>1){ %>
         
