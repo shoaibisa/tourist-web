@@ -194,3 +194,64 @@ exports.viewBlog = (req, res, next) => {
       });
     });
 };
+
+//edit profile
+exports.getEditProfile = (req, res, next) => {
+  res.render("guide/editprofile", {
+    guide: req.guide,
+    profileImage: req.guide.guideImage,
+  });
+};
+
+exports.getProfile = (req, res, next) => {
+  if (!req.guide.profileComplete) {
+    return res.redirect("/guide/edit-profile");
+  }
+  res.render("guide/profile", {
+    guide: req.guide,
+    profileImage: req.guide.guideImage,
+  });
+};
+
+exports.postEditProfile = (req, res, next) => {
+  const profileImage = req.file;
+
+  let image = req.guide.guideImage;
+  if (profileImage) {
+    const pathImg = "upload/images/" + image;
+    if (image && fs.existsSync(pathImg)) {
+      fileHelper.deleteFiles(pathImg);
+    }
+    image = profileImage.filename;
+  }
+  const {
+    contact,
+    name,
+    organization,
+
+    education,
+    country,
+    address,
+    city,
+    state,
+  } = req.body;
+  Guide.findOne({ _id: req.guide._id })
+    .then((guide) => {
+      guide.guideName = name;
+      guide.guidePhone = contact;
+      guide.guideOrganization = organization;
+      guide.guideEducation = education;
+      guide.guideCountry = country;
+      guide.guideAddress = address;
+      guide.guideCity = city;
+      guide.guideState = state;
+      guide.guideImage = image;
+      guide.profileComplete = true;
+
+      return guide.save();
+    })
+    .then((result) => {
+      res.redirect("/guide/profile");
+    })
+    .catch((err) => console.log(err));
+};

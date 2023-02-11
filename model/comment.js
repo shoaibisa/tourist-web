@@ -17,6 +17,12 @@ const commentSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Tourist",
     },
+    replies: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Reply",
+      },
+    ],
     commentBlog: {
       type: Schema.Types.ObjectId,
       ref: "Blog",

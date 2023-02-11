@@ -293,14 +293,19 @@
       </div>
 
       <div class="blog__details__comment mb-5">
-        <h5>03 Comment</h5>
-
+        <%if(blog.comments.length > 0){%>
+        <h5><%=blog.comments.length %> comments</h5>
+        <%}else{%>
+        <h5>0 comments</h5>
+        <%}%>
         <div class="d-flex flex-row mt-4 mb-4">
+          <% if(isGuideAuth || isTouristAuth){%>
           <img
             class="img-fluid img-responsive rounded-circle mr-2"
             src="https://source.unsplash.com/600x400/?people"
             width="38"
           />
+
           <input
             type="text"
             class="form-control mr-3"
@@ -313,6 +318,26 @@
           >
             Comment
           </button>
+          <%}else{%>
+            <img
+            class="img-fluid img-responsive rounded-circle mr-2"
+            src="https://source.unsplash.com/600x400/?people"
+            width="38"
+          />
+
+          <input
+            type="text"
+            class="form-control mr-3"
+            placeholder="Add comment"
+          />
+          <button
+            class="btn btn-primary"
+            style="background-color: #888888; outline: none; border: none"
+            type="button"
+          >
+            Comment
+          </button>
+          <%}%>
         </div>
       </div>
       <div class="blog__details__comment__item">
