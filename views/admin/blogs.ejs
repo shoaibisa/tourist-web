@@ -68,13 +68,16 @@
                     </td>
                     <td>
                       <div style="display: flex">
-                        <button
-                          style="border: none"
-                          type="button"
-                          class="btn-sm btn-block bg-gradient-warning text-white"
-                        >
-                          View
-                        </button>
+                        <form action="/admin/blog/view" method="post">
+                          <input type="hidden" name="blogId" value="<%=blogs[i]._id%>" />
+                          <button
+                            style="border: none"
+                            type="submit"
+                            class="btn-sm btn-block bg-gradient-info text-white"
+                          >
+                            View
+                          </button>
+                        </form>
                       </div>
                     </td>
                     <td>

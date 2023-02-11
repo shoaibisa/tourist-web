@@ -179,3 +179,18 @@ exports.getBlogList = (req, res, next) => {
     });
   });
 };
+
+exports.viewBlog = (req, res, next) => {
+  const blogId = req.body.blogId;
+  Blog.findById(blogId)
+    .populate("blogAuthor")
+    .exec()
+    .then((blog) => {
+      res.render("singleblog", {
+        guide: req.guide,
+        isTouristAuth: false,
+        blog: blog,
+        profileImage: req.guide.guideImage,
+      });
+    });
+};

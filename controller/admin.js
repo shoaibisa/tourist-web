@@ -120,3 +120,19 @@ exports.approvePackage = (req, res, next) => {
       console.log(err);
     });
 };
+
+exports.viewBlog = (req, res, next) => {
+  const blogId = req.body.blogId;
+  Blog.findById(blogId)
+
+    .populate("blogAuthor")
+    .exec()
+    .then((blog) => {
+      res.render("singleblog", {
+        admin: req.admin,
+        blog: blog,
+        isTouristAuth: false,
+        profileImage: false,
+      });
+    });
+};

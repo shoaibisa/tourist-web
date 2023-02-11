@@ -15,6 +15,7 @@ router.post("/guide/deleteblog", isLoggedin, blogController.deleteBlog);
 // get by id, by status by tags
 router.get("/blogs", blogController.getMainBlogList);
 router.get("/blog/:bId", blogController.getBlogById);
+router.get("/blog/tag/:tag", blogController.getBlogByTag);
 
 //actions
 //action

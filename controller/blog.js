@@ -63,7 +63,9 @@ exports.getMainBlogList = (req, res, next) => {
   //latest blogs
   const guide = req.guide;
   // return console.log(guide);
-  Blog.find({ status: "approved" })
+  Blog.find({
+    $and: [{ status: "approved" }],
+  })
     .sort({ createdAt: -1 })
     .populate("blogAuthor")
     // .limit(3)
@@ -196,4 +198,25 @@ exports.postLikeDislike = async (req, res, next) => {
   }
 
   res.redirect("/blog/" + blogId);
+};
+
+//fetch query
+exports.getBlogByTag = (req, res, next) => {
+  const tag = req.params.tag;
+  if (tag === "latest") {
+    return res.redirect("/blogs");
+  }
+  Blog.find({ blogTag: tag, status: "approved" })
+    .sort({ createdAt: -1 })
+    .populate("blogAuthor")
+    .exec()
+    .then((blogs) => {
+      if (!blogs) {
+        return res.redirect("/blogs");
+      }
+      res.render("blogs", {
+        guide: req.guide,
+        blogs: blogs,
+      });
+    });
 };

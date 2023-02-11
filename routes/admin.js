@@ -20,6 +20,7 @@ router.post(
 router.get("/blogs", isAdminLoggedin, adminConroller.getBlogs);
 router.post("/blog/approve", isAdminLoggedin, adminConroller.approveBlog);
 router.post("/blog/abort", isAdminLoggedin, adminConroller.abortBlog);
+router.post("/blog/view", isAdminLoggedin, adminConroller.viewBlog);
 
 //packages
 router.get("/packages", isAdminLoggedin, adminConroller.getPackages);

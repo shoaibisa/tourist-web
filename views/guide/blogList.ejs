@@ -59,17 +59,30 @@
                       <i class="fas fa-thumbs-up"></i> <%=blogs[i].likes %> &nbsp;&nbsp;
                       <i class="fas fa-thumbs-down"></i> <%=blogs[i].dislikes %>
                     </td>
-                    <td> <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >inProcess</button></td>
-
+                    <td>
+                      <% if(blogs[i].status == "pending"){ %>
+                       <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >Pending</button></td>
+                      <% }else if(blogs[i].status == "approved"){ %>
+                      <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-success  text-white" >Active</button></td>
+                      <% }else{ %>
+                      <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-danger  text-white" >Disapproved</button></td>
+                      <% } %>
                     <td><%=blogs[i].comments.length %></td>
                     <td>
                       <div style="display: flex">
-                        <button
-                          type="button"
-                          class="btn btn-block bg-gradient-success text-white"
-                        >
-                          view
-                        </button>
+
+                        <form action="/guide/blog/view" method="post">
+                          <input name="blogId" value="<%=blogs[i]._id %>" hidden />
+                          <button
+                            type="submit"
+                            class="btn btn-block bg-gradient-primary text-white"
+                            
+                          >
+                            View
+                          </button>
+                        </form>
+                     
+                       
                         <button
                           type="button"
                           class="btn btn-block bg-gradient-warning ml-2 text-white"
