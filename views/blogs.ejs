@@ -194,7 +194,7 @@
             <div class="alltegs"  style="display: flex;">
              <%if(blogs[i].blogTag.length>0){ %>
             <% for(var t =0; t<blogs[i].blogTag.length;t++){ %>
-          <span class="blog_tag tag-blue mr-2" style="display: flex"><%=blogs[0].blogTag[t]  %></span>
+          <span class="blog_tag tag-blue mr-2" style="display: flex"><%=blogs[i].blogTag[t]  %></span>
             <% } %>
           <% }else{ %>
           <span class="blog_tag tag-red">Latest</span>
