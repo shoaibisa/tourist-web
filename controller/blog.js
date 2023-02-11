@@ -124,6 +124,8 @@ exports.postLikeDislike = async (req, res, next) => {
   // return console.log(blogAction);
 
   if (!blogAction) {
+    //add like or dislike
+
     Tourist.findByIdAndUpdate(req.tourist._id, {
       $push: {
         blogsAction: {
@@ -134,6 +136,7 @@ exports.postLikeDislike = async (req, res, next) => {
     }).exec();
 
     //update blog likes or dislikes
+
     if (likedislike === "like") {
       Blog.findByIdAndUpdate(blogId, {
         $inc: { likes: 1 },
@@ -146,23 +149,28 @@ exports.postLikeDislike = async (req, res, next) => {
   } else {
     if (blogAction.likedislike === likedislike) {
       //remove the same
-      Tourist.findByIdAndUpdate(req.tourist._id, {
-        $pull: {
-          blogsAction: {
-            blog: blogId,
-            likedislike: likedislike,
+      const blog = await Blog.findById(blogId);
+      if (blog.dislikes !== 0 || likedislike === "like") {
+        Tourist.findByIdAndUpdate(req.tourist._id, {
+          $pull: {
+            blogsAction: {
+              blog: blogId,
+              likedislike: likedislike,
+            },
           },
-        },
-      }).exec();
-      //decrement likes or dislikes
-      if (likedislike === "like") {
-        Blog.findByIdAndUpdate(blogId, {
-          $inc: { likes: -1 },
         }).exec();
+        //decrement likes or dislikes
+        if (likedislike === "like") {
+          Blog.findByIdAndUpdate(blogId, {
+            $inc: { likes: -1 },
+          }).exec();
+        } else {
+          Blog.findByIdAndUpdate(blogId, {
+            $inc: { dislikes: -1 },
+          }).exec();
+        }
       } else {
-        Blog.findByIdAndUpdate(blogId, {
-          $inc: { dislikes: -1 },
-        }).exec();
+        return res.redirect("/blogs/" + blogId);
       }
     } else {
       //remove and add toggle
@@ -187,11 +195,19 @@ exports.postLikeDislike = async (req, res, next) => {
       //increment and decrement likes or dislikes
       if (likedislike === "like") {
         Blog.findByIdAndUpdate(blogId, {
-          $inc: { likes: 1, dislikes: -1 },
+          $inc: { likes: 1 },
+        }).exec();
+
+        Blog.findByIdAndUpdate(blogId, {
+          $inc: { dislikes: -1 },
         }).exec();
       } else {
-        Blog.findOneAndUpdate(blogId, {
-          $inc: { likes: -1, dislikes: 1 },
+        Blog.findByIdAndUpdate(blogId, {
+          $inc: { likes: -1 },
+        }).exec();
+
+        Blog.findByIdAndUpdate(blogId, {
+          $inc: { dislikes: 1 },
         }).exec();
       }
     }
