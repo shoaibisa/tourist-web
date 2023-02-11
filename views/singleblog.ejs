@@ -216,21 +216,56 @@
             style="justify-content: center; display: flex; align-items: center"
           >
             <div class="mr-2"><%=blog.likes %> </div>
-            <i class="far fa-thumbs-up mr-1"></i>
-            <form action="">
-              <button class="btn pl-1 pr-1">Like</button>
+            
+            <%if( isTouristAuth){%>
+              <%if(likedilkeAction ) {%>
+                <%if(likedilkeAction.likedislike === "like") {%>
+                  <i class="fa fa-thumbs-up"></i>
+                  <%}else {%>
+                    <i class="far fa-thumbs-up mr-1"></i>
+                    <%}%>
+                <%}else{%>
+              <i class="far fa-thumbs-up mr-1"></i>
+                <%}%>
+            <form action="/blog/likedislike" method="post">
+              <input type="hidden" name="blogId" value="<%=blog._id%>"> 
+              <input type="hidden" name="likedislike" value="like">
+              <button type="submit" class="btn pl-1 pr-1">Like</button>
             </form>
+            <%}else{%>
+              <i class="far fa-solid fa-thumbs-up mr-1"></i>
+            <a href="/tourist/login" class="btn pl-1 pr-1" style="background: none;">Like</a>
+           
+            <%}%>
           </div>
 
           <div
             class="dislike col-lg-6"
             style="justify-content: center; display: flex; align-items: center"
           >
+
             <div class="mr-2"><%=blog.dislikes %></div>
-            <i class="far fa-thumbs-down"></i>
-            <form action="">
-              <button class="btn pl-1 pr-1">Dislike</button>
+           
+            <%if( isTouristAuth){%>
+              <%if(likedilkeAction ) {%>
+                <%if(likedilkeAction.likedislike === "dislike") {%>
+                  <i class="fa fa-thumbs-down"></i>
+                  <%}else{%>
+                    <i class="far fa-thumbs-down"></i>
+                    <%}%>
+                <%}else{%>
+              <i class="far fa-thumbs-down"></i>
+                <%}%>
+            <form action="/blog/likedislike" method="post">
+              <input type="hidden" name="blogId" value="<%=blog._id%>">
+              <input type="hidden" name="likedislike" value="dislike">
+              <button type="submit" class="btn pl-1 pr-1">Dislike</button>
             </form>
+            <%}else{%>
+              <i class="far fa-thumbs-down"></i>
+            <a href="/tourist/login" class="btn pl-1 pr-1" style="background: none;">Dislike</a>
+           
+            <%}%>
           </div>
         </div>
       </div>
