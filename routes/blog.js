@@ -19,6 +19,7 @@ router.get("/blog/tag/:tag", blogController.getBlogByTag);
 
 //comments
 router.post("/blog/comment", blogController.postComment);
+router.post("/blog/reply", blogController.postReply);
 
 //actions
 //action

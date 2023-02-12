@@ -368,96 +368,173 @@
           <%}%>
         </div>
       </div>
+
+      <%if(blog.comments.length > 0){%>
+      <%for(var i=0; i<blog.comments.length; i++){%>
       <div class="blog__details__comment__item">
         <div class="blog__details__comment__item__pic">
-          <img src="https://source.unsplash.com/600x400/?people" alt="" />
+         
+          <% if(blog.comments[i].commentAuthorType === "guide"){%>
+            <%if (blog.comments[i].commentAuthorGuide.guideImage){%>
+          <img src="/profile/<%=blog.comments[i].commentAuthorGuide.guideImage%>" alt="" />
+          <%}else{%>
+            <img src="https://source.unsplash.com/600x400/?people" alt="" />
+          <%}%>
         </div>
         <div class="blog__details__comment__item__text">
-          <h6>Dylan Stewart</h6>
-          <span>26 Feb 2020</span>
+          <h6><%=blog.comments[i].commentAuthorGuide.guideName%></h6>
+          <% }else {%>
+            <%if (blog.comments[i].commentAuthorTourist.touristImage){%>
+            
+              <img src="/profile/<%=blog.comments[i].commentAuthorTourist.touristImage%>" alt="" />
+            <%}else{%>
+              <img src="https://source.unsplash.com/600x400/?people" alt="" />
+            <%}%>
+        </div>
+        <div class="blog__details__comment__item__text">
+          <h6><%=blog.comments[i].commentAuthorTourist.touristName %> </h6>
+          <%}%>
+          <% var date = new Date(blog.comments[i].createdAt);%>
+          <span><%=date.toDateString()%></span>
+          
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua vel
-            facilisis.
+            <%=blog.comments[i].commentContent%>
           </p>
           <div class="blog__details__comment__btns">            
-            <button   class="comment1"  style="background: none; border:  none;  font-weight: bold;" onclick="myFunction()">Reply</button>
+            <button   class="<%=blog.comments[i]._id%>"  style="background: none; border:  none;  font-weight: bold;" onclick="myFunction()">Reply</button>
            
         </div>
-        <div class="d-flex flex-row mt-4 mb-4" id="comment1" style="display: none !important;">
+        <div class="d-flex flex-row mt-4 mb-4" id="<%=blog.comments[i]._id%>" style="display: none !important;">
+          <% if(isGuideAuth) {%>
+          <%if (guide.guideImage){%>
+          <img  class="img-fluid img-responsive rounded-circle mr-2" src="/profile/<%=guide.guideImage%>"  width="38" alt="guide" />
+          <%}else{%>       
           <img
             class="img-fluid img-responsive rounded-circle mr-2"
             src="https://source.unsplash.com/600x400/?people"
+            alt="guide"
             width="38"
           />
+          <%}%>
+          <form action="/blog/reply" method="post" >
           <input
             type="text"
             class="form-control mr-3"
             placeholder="Add comment"
+            name="reply"
           />
+          <input type="hidden" name="blogId" value="<%=blog._id%>" />
+          <input type="hidden" name="commentId" value="<%=blog.comments[i]._id%>" />
+          <input type="hidden" name="replyAuthorType" value="guide" />
+          <input type="hidden" name="replyAuthorId" value="<%=guide._id%>" />
+          
           <button
             class="btn btn-primary"
             style="background-color: #888888; outline: none; border: none"
-            type="button"
+            type="submit"
           >
             Comment
           </button>
+        </form>
+          <% }else if(isTouristAuth) {%>
+            <%if (tourist.touristImage){%>
+          <img  class="img-fluid img-responsive rounded-circle mr-2" src="/profile/<%=tourist.touristImage%>"  width="38" alt="tourist" />
+          <%}else{%>       
+          <img
+            class="img-fluid img-responsive rounded-circle mr-2"
+            src="https://source.unsplash.com/600x400/?people"
+            alt="tourist"
+            width="38"
+          />
+          <%}%>
+          <form action="/blog/reply" method="post" >
+          <input
+            type="text"
+            class="form-control mr-3"
+            placeholder="Add comment"
+            alt="tourist"
+            name="reply"
+          />
+          <input type="hidden" name="blogId" value="<%=blog._id%>" />
+          <input type="hidden" name="commentId" value="<%=blog.comments[i]._id%>" />
+          <input type="hidden" name="replyAuthorType" value="tourist" />
+          <input type="hidden" name="replyAuthorId" value="<%=tourist._id%>" />
+          
+          <button
+            class="btn btn-primary"
+            style="background-color: #888888; outline: none; border: none"
+            type="submit"
+          >
+            Comment
+          </button>
+        </form>
+          <%}else {%>
+            <img
+            class="img-fluid img-responsive rounded-circle mr-2"
+            src="https://source.unsplash.com/600x400/?people"
+            width="38"
+          />
+          
+          <input
+            type="text"
+            class="form-control mr-3"
+            placeholder="Add comment"
+            name="reply"
+          />
+          
+          <a
+            class="btn btn-primary"
+            style="background-color: #888888; outline: none; border: none"
+            href="/tourist/login"
+          >
+            Comment
+          </a>
+          <%}%>
         </div>
         </div>
       </div>
+      <%if(blog.comments[i].replies.length > 0){%>
+      <%for(var j=0; j<blog.comments[i].replies.length; j++){%>
       <div
         class="blog__details__comment__item blog__details__comment__item--reply"
       >
         <div class="blog__details__comment__item__pic">
-          <img src="https://source.unsplash.com/600x400/?people" alt="" />
+          <% if(blog.comments[i].replies[j].replyAuthorType === "guide"){%>
+          <%if (blog.comments[i].replies[j].replyAuthorGuide.guideImage){%>
+          <img src="/profile/<%=blog.comments[i].replies[j].replyAuthorGuide.guideImage%>" alt="" />
+          <%}else {%>
+            <img src="https://source.unsplash.com/600x400/?people" alt="" />
+          <%}%>
+          
         </div>
-        <div class="blog__details__comment__item__text">
-          <h6>Derrick Patrick</h6>
-          <span>26 Feb 2020</span>
+        <div class="blog__details__comment__item__text"> 
+          <h6><%=blog.comments[i].replies[j].replyAuthorGuide.guideName%></h6>
+          <%}else {%>
+          <%if (blog.comments[i].replies[j].replyAuthorTourist.touristImage){%>
+          <img src="/profile/<%=blog.comments[i].replies[j].replyAuthorTourist.touristImage%>" alt="" />
+          <%}else {%>
+            <img src="https://source.unsplash.com/600x400/?people" alt="" />
+          <%}%>
+
+        </div>
+        <div class="blog__details__comment__item__text"> 
+          <h6><%=blog.comments[i].replies[j].replyAuthorTourist.touristName%></h6>
+          <%}%>
+          <% var datep = new Date(blog.comments[i].replies[j].createdAt);%>
+          <span><%=datep.toDateString()%></span>
+          
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua vel
-            facilisis.
+            <%=blog.comments[i].replies[j].replyContent%>
           </p>
        
         </div>
       </div>
-      <div class="blog__details__comment__item">
-        <div class="blog__details__comment__item__pic">
-          <img src="https://source.unsplash.com/600x400/?people" alt="" />
-        </div>
-        <div class="blog__details__comment__item__text">
-          <h6>Michael Luna</h6>
-          <span>26 Feb 2020</span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua vel
-            facilisis.
-          </p>
-          <div class="blog__details__comment__btns">
-            <button  class="comment2"  style="background: none; border:  none;  font-weight: bold;" onclick="myFunction()">Reply</button>
-        </div>
-        <div class="d-flex flex-row mt-4 mb-4" id="comment2" style="display: none !important;">
-          <img
-            class="img-fluid img-responsive rounded-circle mr-2"
-            src="https://source.unsplash.com/600x400/?people"
-            width="38"
-          />
-          <input
-            type="text"
-            class="form-control mr-3"
-            placeholder="Add comment"
-          />
-          <button
-            class="btn btn-primary"
-            style="background-color: #888888; outline: none; border: none"
-            type="button"
-          >
-            Comment
-          </button>
-        </div>
-        </div>
-      </div>
+      <%}%>
+      <%}%>
+      <%}%>
+      <%}%>
+
+      
     </div>
 
     <div class="col-lg-3">

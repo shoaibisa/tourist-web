@@ -17,6 +17,10 @@ const replySchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Tourist",
     },
+    replyComment: {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    },
   },
   { timestamps: true }
 );

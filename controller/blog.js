@@ -4,6 +4,7 @@ const Blog = require("../model/blog");
 const fs = require("fs");
 const Comment = require("../model/comment");
 const fileHelper = require("../util/file");
+const Reply = require("../model/reply");
 //post a blog
 exports.postBlog = (req, res, next) => {
   const bimage = req.file;
@@ -106,11 +107,55 @@ exports.getBlogById = async (req, res, next) => {
   Blog.findByIdAndUpdate(bId, { $inc: { blogViews: 1 } }).exec();
   Blog.findOne({ _id: bId })
     .populate("blogAuthor")
+    .populate("comments")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "commentAuthorTourist",
+        model: "Tourist",
+      },
+    })
+    .populate({
+      path: "comments",
+      populate: {
+        path: "commentAuthorGuide",
+        model: "Guide",
+      },
+    })
+    .populate({
+      path: "comments",
+      populate: {
+        path: "replies",
+        model: "Reply",
+      },
+    })
+    .populate({
+      path: "comments",
+      populate: {
+        path: "replies",
+        populate: {
+          path: "replyAuthorTourist",
+          model: "Tourist",
+        },
+      },
+    })
+    .populate({
+      path: "comments",
+      populate: {
+        path: "replies",
+        populate: {
+          path: "replyAuthorGuide",
+          model: "Guide",
+        },
+      },
+    })
+
     .exec()
     .then((blog) => {
       if (blog.status !== "approved") {
         return res.redirect("/blogs");
       }
+      // return console.log(blog.comments);
       res.render("singleblog", {
         guide: req.guide,
         tourist: req.tourist,
@@ -298,4 +343,81 @@ exports.postComment = (req, res, next) => {
     });
   }
   res.redirect("/blog/" + blogId);
+};
+
+exports.postReply = (req, res, next) => {
+  const commentId = req.body.commentId;
+  const reply = req.body.reply;
+  const replyAuthorType = req.body.replyAuthorType;
+  const blogId = req.body.blogId;
+  const replyAuthorId = req.body.replyAuthorId;
+
+  if (replyAuthorType === "guide") {
+    const r = new Reply({
+      replyContent: reply,
+      replyAuthorGuide: replyAuthorId,
+      replyAuthorType: "guide",
+      replyComment: commentId,
+    });
+    return r
+
+      .save()
+      .then((result) => {
+        Comment.findById(commentId)
+          .then((comment) => {
+            comment.replies.push(result._id);
+            comment.save();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .then(() => {
+        res.redirect("/blog/" + blogId);
+      });
+  } else {
+    const r = new Reply({
+      replyContent: reply,
+      replyAuthorTourist: replyAuthorId,
+      replyAuthorType: "tourist",
+      replyComment: commentId,
+    });
+    return r
+      .save()
+      .then((result) => {
+        Comment.findById(commentId)
+          .then((comment) => {
+            comment.replies.push(result._id);
+            comment.save();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .then(() => {
+        res.redirect("/blog/" + blogId);
+      });
+  }
+};
+
+exports.getBlogBySearch = (req, res, next) => {
+  const search = req.body.search;
+  Blog.find({
+    $or: [
+      { blogTitle: { $regex: search, $options: "i" } },
+      { blogContent: { $regex: search, $options: "i" } },
+    ],
+  })
+    .sort({ createdAt: -1 })
+    .populate("blogAuthor")
+    .exec()
+    .then((blogs) => {
+      if (!blogs) {
+        return res.redirect("/blogs");
+      }
+      res.render("blogs", {
+        guide: req.guide,
+        blogs: blogs,
+      });
+    });
 };
