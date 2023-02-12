@@ -2,6 +2,7 @@ const Guide = require("../model/guide");
 const Tourist = require("../model/tourist");
 const Blog = require("../model/blog");
 const fs = require("fs");
+const Comment = require("../model/comment");
 const fileHelper = require("../util/file");
 //post a blog
 exports.postBlog = (req, res, next) => {
@@ -89,6 +90,17 @@ exports.getBlogById = async (req, res, next) => {
       return b.blog.equals(bId);
     });
   }
+  var nextBlog = await Blog.findOne({ _id: { $gt: bId } });
+  var prevBlog = await Blog.findOne({ _id: { $lt: bId } });
+  var count = await Blog.countDocuments({ status: "approved" });
+  const blogs = await Blog.find({ status: "approved" });
+  var random = Math.floor(Math.random() * count);
+  if (!nextBlog) {
+    nextBlog = blogs[random];
+  }
+  if (!prevBlog) {
+    prevBlog = blogs[random];
+  }
   // return console.log(likedilkeAction);
   //count views
   Blog.findByIdAndUpdate(bId, { $inc: { blogViews: 1 } }).exec();
@@ -99,12 +111,13 @@ exports.getBlogById = async (req, res, next) => {
       if (blog.status !== "approved") {
         return res.redirect("/blogs");
       }
-      // return console.log(blog);
       res.render("singleblog", {
         guide: req.guide,
         tourist: req.tourist,
         blog: blog,
 
+        nextBlog: nextBlog,
+        prevBlog: prevBlog,
         likedilkeAction: likedilkeAction,
         isGuideAuth: req.isGuideAuth,
         isTouristAuth: req.isTouristAuth,
@@ -235,4 +248,54 @@ exports.getBlogByTag = (req, res, next) => {
         blogs: blogs,
       });
     });
+};
+
+exports.postComment = (req, res, next) => {
+  const blogId = req.body.blogId;
+  const comment = req.body.comment;
+  const authType = req.body.authType;
+  //return console.log(authType, comment, blogId);
+
+  if (authType === "guide") {
+    const c = new Comment({
+      commentContent: comment,
+      commentAuthorGuide: req.guide._id,
+      commentAuthorType: "guide",
+      commentBlog: blogId,
+    });
+    return c
+      .save()
+      .then((result) => {
+        Blog.findByIdAndUpdate(blogId, {
+          $push: {
+            comments: result._id,
+          },
+        }).exec();
+      })
+      .then(() => {
+        res.redirect("/blog/" + blogId);
+      });
+  } else {
+    const c = new Comment({
+      commentContent: comment,
+      commentAuthorTourist: req.tourist._id,
+      commentAuthorType: "tourist",
+      commentBlog: blogId,
+    });
+
+    c.save((err, result) => {
+      if (err) {
+        return res.redirect("/blogs/" + blogId);
+      }
+      Blog.findById(blogId)
+        .then((blog) => {
+          blog.comments.push(result._id);
+          blog.save();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  }
+  res.redirect("/blog/" + blogId);
 };

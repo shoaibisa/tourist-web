@@ -272,7 +272,7 @@
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6" style="max-width: 50%">
           <div class="blog__details__btns__item">
-            <a href="#">
+            <a href="/blog/<%=prevBlog._id %>">
               <i class="far fa-arrow-alt-circle-left"></i>
               <span class="arrow_carrot-left"></span> Previous posts
             </a>
@@ -283,7 +283,7 @@
             class="blog__details__btns__item blog__details__btns__item--next"
             style="text-align: end"
           >
-            <a href="#"
+            <a href="/blog/<%=nextBlog._id%>"
               >Next posts
               <span class="arrow_carrot-right"></span>
               <i class="far fa-arrow-alt-circle-right"></i>
@@ -299,25 +299,53 @@
         <h5>0 comments</h5>
         <%}%>
         <div class="d-flex flex-row mt-4 mb-4">
-          <% if(isGuideAuth || isTouristAuth){%>
+          <% if(isGuideAuth){%>
+           
           <img
             class="img-fluid img-responsive rounded-circle mr-2"
-            src="https://source.unsplash.com/600x400/?people"
+            src="/profile/<%=guide.guideImage%>"
             width="38"
           />
-
+          <form action="/blog/comment" method="post">
+           <input type="hidden" name="blogId" value="<%=blog._id%>">
+           <input type="hidden" name="authType" value="guide">
           <input
             type="text"
             class="form-control mr-3"
             placeholder="Add comment"
+            name="comment"
           />
           <button
             class="btn btn-primary"
             style="background-color: #888888; outline: none; border: none"
-            type="button"
+            type="submit"
           >
             Comment
           </button>
+        </form>
+          <%}else if(isTouristAuth){%>
+            <img
+            class="img-fluid img-responsive rounded-circle mr-2"
+            src="/profile/<%=tourist.touristImage%>"
+            width="38"
+          />
+          <form action="/blog/comment" method="post">
+           <input type="hidden" name="blogId" value="<%=blog._id%>">
+           <input type="hidden" name="authType" value="tourist">
+          <input
+            type="text"
+            class="form-control mr-3"
+            placeholder="Add comment"
+            name="comment"
+          />
+          <button
+            class="btn btn-primary"
+            style="background-color: #888888; outline: none; border: none"
+            type="submit"
+          >
+            Comment
+          </button>
+        </form>
           <%}else{%>
             <img
             class="img-fluid img-responsive rounded-circle mr-2"
@@ -330,13 +358,13 @@
             class="form-control mr-3"
             placeholder="Add comment"
           />
-          <button
+          <a
             class="btn btn-primary"
             style="background-color: #888888; outline: none; border: none"
-            type="button"
+            href="/tourist/login"
           >
             Comment
-          </button>
+          </a>
           <%}%>
         </div>
       </div>

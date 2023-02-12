@@ -17,6 +17,9 @@ router.get("/blogs", blogController.getMainBlogList);
 router.get("/blog/:bId", blogController.getBlogById);
 router.get("/blog/tag/:tag", blogController.getBlogByTag);
 
+//comments
+router.post("/blog/comment", blogController.postComment);
+
 //actions
 //action
 router.post(
