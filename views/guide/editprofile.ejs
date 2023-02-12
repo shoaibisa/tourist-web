@@ -2,6 +2,7 @@
 <%- include("../conn/header.ejs") %> <%- include("../conn/top.ejs") %>
 <!-- Main Sidebar Container -->
 <%- include("../conn/navebar.ejs") %>
+<div class="content-wrapper">
 <section class="content">
   <div class="container mt-3 pt-3">
     <h1 style="text-align: center" class="mb-3 pb-3">
@@ -11,20 +12,6 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <form action="/guide/edit-profile" enctype="multipart/form-data" method="post">
-          
-            <div class="col-md-6 mb-3">
-              <label for="validationDefault02">Contact Details</label>
-              <input
-                type="text"
-                class="form-control"
-                id="validationDefault02"
-                placeholder="Content Details"
-                name="contact"
-                value="<%=guide.guidePhone %>"
-                required
-              />
-            </div>
-          </div>
           <div class="form-row">
             <div class="col-md-6 mb-3">
               <label for="validationDefault01">Name</label>
@@ -74,6 +61,18 @@
                 placeholder="Country"
                 name="country"
                 value="<%=guide.guideCountry %>"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationDefault02">Contact Number</label>
+              <input
+                type="phone"
+                class="form-control"
+                id="validationDefault02"
+                placeholder="Content Details"
+                name="contact"
+                value="<%=guide.guidePhone %>"
                 required
               />
             </div>
@@ -134,6 +133,6 @@
     </div>
   </div>
 </section>
-
+</div>
 <!-- /Footer -->
 <%- include("../conn/copyright.ejs") %> <%- include("../conn/footer.ejs") %>

@@ -2,42 +2,16 @@
 <%- include("../conn/header.ejs") %> <%- include("../conn/top.ejs") %>
 <!-- Main Sidebar Container -->
 <%- include("./navebar.ejs") %>
-<section class="content">
-  <div class="container mt-3 pt-3">
+<div class="content-wrapper">
+<section class="content ">
+  <div class="container ">
     <h1 style="text-align: center" class="mb-3 pb-3">
       Please Fill The Basic Details First!
     </h1>
-    <div class="row">
-      <div class="col-md-2"></div>
+    <div class="row mb-3">
+       
       <div class="col-md-8">
         <form action="/tourist/edit-profile" enctype="multipart/form-data" method="post">
-          
-            <div class="col-md-6 mb-3">
-              <label for="validationDefault02">Contact Details</label>
-              <input
-                type="text"
-                class="form-control"
-                id="validationDefault02"
-                placeholder="Content Details"
-                name="contact"
-                value="<%=tourist.touristPhone %>"
-                required
-              />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-6 mb-3">
-              <label for="validationDefault01">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="validationDefault01"
-                placeholder="Organization"
-                name="name"
-                value="<%=tourist.touristName %>"
-                required
-              />
-            </div>
           <div class="form-row">
             <div class="col-md-6 mb-3">
               <label for="validationDefault01">Organization</label>
@@ -63,7 +37,7 @@
                 required
               />
             </div>
-          </div>
+        
           
             <div class="col-md-6 mb-3">
               <label for="validationDefault01">Country</label>
@@ -77,6 +51,18 @@
                 required
               />
             </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationDefault01">Contect No.</label>
+              <input
+                type="phone"
+                class="form-control"
+                id="validationDefault01"
+                placeholder="phone"
+                name="phone"
+                value="<%=tourist.touristCountry %>"
+                required
+              />
+                
           </div>
           <div class="form-row">
             <div class="col-md-6 mb-3">
@@ -116,6 +102,7 @@
               />
             </div>
           </div>
+        </div>
           <div class="form-row">
             <div class="col-md-12 mb-3">
               <label for="validationDefault01">Profile picture</label>
@@ -128,12 +115,17 @@
             </div>
           </div>
           <button class="btn btn-primary" type="submit">Submit</button>
+       
         </form>
+
       </div>
-      <div class="col-md-2"></div>
+     
     </div>
+
+
   </div>
 </section>
+</div>
 
 <!-- /Footer -->
 <%- include("../conn/copyright.ejs") %> <%- include("../conn/footer.ejs") %>
