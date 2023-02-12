@@ -124,7 +124,7 @@ exports.postEditProfile = (req, res, next) => {
   const {
     organization,
     education,
-    contact,
+    phone,
     country,
     address,
     name,
@@ -139,7 +139,7 @@ exports.postEditProfile = (req, res, next) => {
       tourist.touristImage = image;
       tourist.touristOrganization = organization;
       tourist.touristEducation = education;
-      tourist.touristPhone = contact;
+      tourist.touristPhone = phone;
       tourist.touristCountry = country;
       tourist.touristAddress = address;
       tourist.touristCity = city;
