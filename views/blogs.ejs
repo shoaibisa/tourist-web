@@ -286,22 +286,27 @@
       </div>
       <div class="blog__sidebar__item">
         <h5>Popular posts</h5>
-        <% for(var i=0; i<4; i++){ %>
+        <% if(trendingBlogs.length>0){ %>
+        <%  for(var i =0; i<trendingBlogs.length; i++){%>
         <div class="blog__sidebar__recent mb-4" style="display: flex">
           <!-- <a href="#" class="blog__sidebar__recent__item"  style="text-decoration: none;"> -->
           <div class="blog__sidebar__recent__item__pic mr-5">
-            <a href="http://">
-              <img src="https://source.unsplash.com/90x90/?treval" alt="" />
+            <a href="/blog/<%=trendingBlogs[i]._id%>">
+              <img src="/profile/<%=trendingBlogs[i].blogImage%>" height="100px" width="100px" alt="blog" />
             </a>
           </div>
           <div class="blog__sidebar__recent__item__text">
-            <a href="http://" style="text-decoration: none">
-              <h5>Secret To Cooking Vegetables</h5>
-              <span>13 Nov 2020</span>
+            <a href="/blog/<%=trendingBlogs[i]._id%>" style="text-decoration: none">
+              <h5><%=trendingBlogs[i].blogTitle%></h5>
+              <% var dtt = new Date(trendingBlogs[i].createdAt); %>
+              <span><%=dtt.toDateString()%></span>
+             
             </a>
           </div>
           <!-- </a> -->
         </div>
+
+        <% } %>
         <% } %>
       </div>
     </div>
