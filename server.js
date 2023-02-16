@@ -117,6 +117,10 @@ app.get("/faq", (req, res) => {
   res.render("pages/feq", { guide: req.guide });
 });
 
+app.get("/allPackage", (req, res) => {
+  res.render("package/allPackage", { guide: req.guide });
+});
+
 app.use((req, res) => {
   res.status(404).render("pages/error404");
 });
