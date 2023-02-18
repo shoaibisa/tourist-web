@@ -1,0 +1,197 @@
+<%- include("../conn/header.ejs") %>
+ <style>
+    .package_image_img{
+            max-width: 300px;
+    }
+    .package_content{
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        margin-left: 20px;
+         line-height: 1.7rem;
+
+    }
+    .package_booking{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 300px;
+    }
+    .heading_package{
+       border-bottom: 2px  dotted grey;
+    }
+    .package_dureastion{
+       margin-top:8px;
+    }
+    .package_location{
+        margin-top: 8px;
+    }
+    .author-stars {
+    display: flex;
+    flex-direction: column;
+ 
+    align-items: center;
+    justify-content: center;
+    
+}
+    .type-price {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+ </style>
+<%- include("../frontviewComm/navbar.ejs") %>
+ <div class="container" style="min-height:100vh;">
+   <div class="card  mt-3 ">
+      <div class="card-body" style="display: flex; justify-content: space-evenly;">
+         <div class="package_image" >
+         <img class="package_image_img" src="https://i.ibb.co/CWYHcrL/product1.jpg" alt="">
+         </div>
+         <div class="package_content">
+               <h5 class="heading_package">
+                  KARNATAKA - BHARATH GAURAV KASHI DARSHAN (KABG01)
+               </h5>
+               <div class="package_location"><i class="fas fa-location-arrow"></i>AYODHYA, PRAYAGRAJ, VARANASI</div>
+               <div class="package_dureastion"> <i class="fas fa-clock"></i>7 Nights/8 Days</div>
+               <div class="package_para">
+                  <p class="package_details">Govt of Karnataka, in association with IRCTC Ltd. offers “Karnataka Bharat Gaurav Kashi Darshan” theme based pilgrimage tour by Bharat Gaurav Tourist train covering the prominent sacred places of divine city Varanasi, Ayodhya & Prayagraj in a 08 days journey. "Special Discount of Rs. 5000/- per person by Govt. of Karnataka"</p>
+               </div>
+         </div>
+         <div class="author-stars" >
+            <div class="author">
+               <h6  style="font-size: 14px; font-weight: bold;"> Starting from </h6>
+            </div>
+               <div class="type-price">
+                  <span class="price " style="font-weight: bold;"><span class="dollar">$</span>14</span>
+               </div>
+                  <button class="btn" style="background-color: rgb(249, 200, 37);"> Book Now</button>
+      </div>
+      </div>
+   </div>
+      <nav>
+         <div class="nav nav-tabs" id="nav-tab" role="tablist">
+         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-overview" role="tab" aria-controls="nav-home" aria-selected="true">Overview</a>
+         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-Itinerary" role="tab" aria-controls="nav-profile" aria-selected="false">Itinerary</a>
+         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-Inclusion" role="tab" aria-controls="nav-contact" aria-selected="false">Inclusion</a>
+         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-Terms" role="tab" aria-controls="nav-contact" aria-selected="false">Terms & Conditions</a>
+         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact us</a>
+         </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+         <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-home-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos explicabo quo quasi eaque beatae odit earum perspiciatis cum perferendis dignissimos ex totam, itaque, minus autem architecto at debitis. Corporis, eius.</div>
+         <div class="tab-pane fade" id="nav-Itinerary" role="tabpanel" aria-labelledby="nav-profile-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolores voluptates, totam recusandae blanditiis labore cupiditate odio aperiam inventore voluptas quo ut quod molestias molestiae officia temporibus obcaecati consequatur atque.</div>
+         <div class="tab-pane fade" id="nav-Inclusion" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <h4 class="terms_heading mt-2" style="color:rgb(30, 44, 44)">SERVICES INCLUSIONS:</h4>
+            <ul class="pl-5 pr-5">
+              <li>Train Journey by Bharat Gaurav Special tourist train in 3AC class.</li>
+              <li>Nights stay will be provided in Hotels in Non-AC Rooms on twin/triple share.</li>
+              <li>Wash and change as per itinerary in Hotels in Non-AC Rooms.</li>
+              <li>All meals (veg only).</li>
+              <li>All Transfers and sightseeing by Non-AC buses.</li>
+              <li>All applicable Taxes.</li>
+              <li>Travel insurance for the passengers.</li>
+           </ul>
+           <h4 class="terms_heading mt-2" style="color:rgb(26, 34, 34)">PACKAGE EXCLUSIONS:</h4>
+            <ul  class="pl-5 pr-5">
+               <li>Boating, adventure sports etc.</li>
+               <li>Meals are preset and a choice of menu is not available.</li>
+               <li>Any room service will be chargeable.</li>
+               <li>Cost of sightseeing, entrance and local guides etc. not included in the itinerary.</li>
+               <li>All kind of tips to drivers, waiters, guides, representative, Fuel Surcharge, etc.</li>
+               <li>Any expenses of personal nature such as laundry expenses, wines, mineral water, food and drinks not in the regular menus provided by us</li>
+               <li>Anything not included in the inclusions.</li>
+            </ul>
+
+
+         </div>
+         <div class="tab-pane fade" id="nav-Terms" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <h4 class="terms_heading mt-2"style="color:rgb(26, 34, 34)">Terms and Conditions:</h4>
+             <ul class="pl-5 pr-5">
+               <li>All Guests are requested to carry Voter ID/Aadhar Card & Covid-19 final dose certificate with them.</li>
+               <li>Some of the hotels in the selected locations may not be having lift facilities.</li> 
+               <li>Itinerary is tentative and can be changed or modified subject to smooth and timely running of Train. The final Timing will be based on the Train order received from the railways.</li>
+               <li>Operation of Bharat Gaurav Tourist Train is subject to minimum number of passengers booked.</li>
+               <li>IRCTC has right to alter itinerary under unavoidable circumstances and is not liable for any type of natural calamities/ strikes/ cancellation/ delay of train/ insurgency of any such nature which is beyond control during the tour period.</li>
+               <li>Operation of Bharat Gaurav Tourist Train is subject to minimum number of passengers booked.</li>
+            </ul>
+         </div>
+         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            <h6 class="terms_heading mt-2"style="text-align:center;  color:rgb(26, 34, 34); ">Contact for booking:</h6>
+            <div class="content_details pr-5 pl-5 mt-3">
+               <table border="2px solid black">
+                  <tbody></tbody>
+                   <tr>
+                     <td class="p-3" width:"50">
+                       <p style="text-align:center">
+                           <span style="font-weight: bold;">Regional Office (Bengaluru)</span>
+                           <br>
+                          <span>No. 82, SMR Arcade, Dr .Raj Kumar Road,</span>
+                          <br>
+                          <span>Rajajinagar, Bengaluru - 560 010.</span>
+                          <br>
+                          <span> Telephone: 080-43023088, 8595931290/91</span>
+                          <br>
+                          <span>E-mail: - tourismsbc[@]irctc[dot]com</span>
+       
+                      </p>
+                      
+                     </td>
+                     <td class="p-3">
+                       <p style="text-align:center">
+                          <span style="font-weight: bold;">Tourist Information & Facilitation Centre (Bengaluru)</span>
+                          <br>
+                          <span>No. 82, SMR Arcade, Dr .Raj Kumar Road,</span>
+                          <br>
+                          <span>Rajajinagar, Bengaluru - 560 010.</span>
+                          <br>
+                          <span> Telephone: 080-43023088, 8595931290/91</span>
+                          <br>
+                          <span>E-mail: - tourismsbc[@]irctc[dot]com</span>
+       
+                      </p>
+                     </td>
+                   </tr>
+                   <tr>
+                    <td class="p-3">
+                       <p style="text-align:center">
+                          <span style="font-weight: bold;">Tourist Information & Facilitation Centre (Mysuru)</span>
+                           <br>
+                          <span>No. 82, SMR Arcade, Dr .Raj Kumar Road,</span>
+                          <br>
+                          <span>Rajajinagar, Bengaluru - 560 010.</span>
+                          <br>
+                          <span> Telephone: 080-43023088, 8595931290/91</span>
+                          <br>
+                          <span>E-mail: - tourismsbc[@]irctc[dot]com</span>
+       
+                      </p>
+                    </td>
+                    <td class="p-3">
+                       <p style="text-align:center">
+                          <span style="font-weight: bold;">Tourist Information & Facilitation Centre (Hubballi)</span>
+                          <br>
+                           <span>No. 82, SMR Arcade, Dr .Raj Kumar Road,</span>
+                           <br>
+                           <span>Rajajinagar, Bengaluru - 560 010.</span>
+                           <br>
+                           <span> Telephone: 080-43023088, 8595931290/91</span>
+                           <br>
+                           <span>E-mail: - tourismsbc[@]irctc[dot]com</span>
+        
+                       </p>
+                    </td>
+                  </tr>
+              </table>
+            </div>
+
+         </div>
+
+      </div>
+ </div>
+
+
+ <%- include("../frontviewComm/footer.ejs") %>
+<%- include("../conn/footer.ejs") %>
