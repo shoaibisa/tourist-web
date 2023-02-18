@@ -164,6 +164,14 @@
           <p>
             <%=blogs[0].blogContent.substring(0, 200) %>...
           </p>
+          <div class="info mb-3" style="display: flex; justify-content: end;  padding: 0.7rem">
+            <li style="list-style: none">By <span><%=blogs[0].blogAuthor.guideName %></span></li>
+            <% var  eventDate = new Date(blogs[0].createdAt); %>
+            <%let dates = JSON.stringify(eventDate) %>
+           <% dates = dates.slice(1,11) %>
+            <li style="list-style: none"><%=dates %></li>
+            <li style="list-style: none"><%=blogs[0].blogViews %> views</li>
+          </div>
           <a
         href="/blog/<%=blogs[0]._id %>"
         style="outline: none; text-decoration: none"

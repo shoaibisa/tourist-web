@@ -306,7 +306,7 @@
             src="/profile/<%=guide.guideImage%>"
             width="38"
           />
-          <form action="/blog/comment" method="post">
+          <form action="/blog/comment" class="col-lg-11" style="display: flex;"method="post">
            <input type="hidden" name="blogId" value="<%=blog._id%>">
            <input type="hidden" name="authType" value="guide">
           <input
@@ -329,7 +329,7 @@
             src="/profile/<%=tourist.touristImage%>"
             width="38"
           />
-          <form action="/blog/comment" method="post">
+          <form action="/blog/comment" class="col-lg-11" style="display: flex;" method="post">
            <input type="hidden" name="blogId" value="<%=blog._id%>">
            <input type="hidden" name="authType" value="tourist">
           <input
@@ -416,7 +416,7 @@
             width="38"
           />
           <%}%>
-          <form action="/blog/reply" method="post" >
+          <form action="/blog/reply" class="col-lg-11"  style="display: flex;"  method="post" >
           <input
             type="text"
             class="form-control mr-3"
@@ -447,7 +447,7 @@
             width="38"
           />
           <%}%>
-          <form action="/blog/reply" method="post" >
+          <form action="/blog/reply" class="col-lg-11" style="display: flex;"   method="post" >
           <input
             type="text"
             class="form-control mr-3"
