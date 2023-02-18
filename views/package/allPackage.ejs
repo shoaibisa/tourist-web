@@ -65,48 +65,7 @@
     max-width: 300px;
 }
 
-.section-products .single-product .img-part .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0,0,0,.8);
-    color: #fff;
-    opacity: 0;
-    transition: opacity .5s;
-}
 
-.section-products .single-product .img-part .overlay:hover {
-    opacity: 1;
-}
-
-.section-products .single-product .img-part .item,
-.section-products .single-product .img-part .favourite {
-    margin: 0 20px;
-    text-align: center;
-}
-
-.section-products .single-product .img-part .item .icon-button {
-    background-color: #01d7b3;
-    transition: background-color .3s;
-}
-
-.section-products .single-product .img-part .item .icon-button:hover {
-    background-color: #04bfa0;
-}
-
-.section-products .single-product .img-part .favourite .icon-button {
-    background-color: #00c7e4;
-    transition: background-color .3s;
-}
-
-.section-products .single-product .img-part .favourite .icon-button:hover {
-    background-color: #03abc3;
-}
 
 .section-products .single-product .img-part .icon-button {
     display: inline-block;
@@ -426,115 +385,60 @@
             </div>
           </div>
           <div class=" card mt-3  p-2">
-            <div class="city"> <h4> Filters By Package Type</h4></div>
+            <div class="city"> <h4>Author</h4></div>
               <ul  style="text-decoration:  none;"  class="p-3">
                 
+                <% for(var i=0; i<5; i++){ %>
                 <li>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
+                        <label class="form-check-label">Author Name</label>
                         </div>
                  </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-             
+                 <% }%>
+                  <div class="filter_btn"  style="display: flex; justify-content: end;">
+                    <button class="btn"  style="background-color: rgb(40, 111, 244); color: #ffff;">Filter</button>
+
+                  </div>
+         
               </ul>
 
           </div> <div class=" card mt-3  p-2">
-            <div class="city"> <h4> Category</h4></div>
+            <div class="city"> <h4> Categories</h4></div>
               <ul  style="text-decoration:  none;"  class="p-3">
                 
-                <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
+                <% for(var i=0; i<5; i++){ %>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" >
+                            <label class="form-check-label">Categories Name</label>
+                            </div>
+                     </li>
+                     <% }%>
+                      <div class="filter_btn"  style="display: flex; justify-content: end;">
+                        <button class="btn"  style="background-color: rgb(40, 111, 244); color: #ffff;">Filter</button>
+    
+                      </div>
              
               </ul>
 
           </div>
 
           <div class=" card mt-3  p-2">
-            <div class="city"> <h4> Origin</h4></div>
+            <div class="city"> <h4>Place</h4></div>
               <ul  style="text-decoration:  none;"  class="p-3">
-                
-                <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
-                 <li>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" checked="">
-                        <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                 </li>
+                <% for(var i=0; i<5; i++){ %>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" >
+                            <label class="form-check-label">Place name</label>
+                            </div>
+                     </li>
+                     <% }%>
+                      <div class="filter_btn"  style="display: flex; justify-content: end;">
+                        <button class="btn"  style="background-color: rgb(40, 111, 244); color: #ffff;">Filter</button>
+    
+                      </div>
              
               </ul>
 
@@ -561,27 +465,18 @@
                             <div class="single-product">
                                 <div class="img-part">
                                     <img src="https://i.ibb.co/CWYHcrL/product1.jpg" alt="">
-                                    <div class="overlay">
-                                        <div class="item">
-                                            <a href="#" class="icon-button"><i class="far fa-eye"></i></a>
-                                            <span class="text-button">Go to Item</span>
-                                        </div>
-                                        <div class="favourite">
-                                            <a href="#" class="icon-button"><i class="far fa-heart"></i></a>
-                                            <span class="text-button">Favourites +</span>
-                                        </div>
-                                    </div>
+        
                                 </div>
                                 <div class="product-discraption">
                                     <span class="tag featured">Featured</span>
                                     <h3 class="title"><a href="#">Vikinger - Social Network and Marketplace PSD Template</a></h3>
                                     <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla tristique tincidunt...</p>
                                     <div class="type-price">
-                                        <a href="#" class="type">Details</a>
+                                        <a href="/packageDetails" class="type">Details</a>
                                         <!-- <span class="price"><span class="dollar">$</span>14</span> -->
                                     </div>
                                 </div>
-                                <div class="author-stars" style="background:#F3F3F3;">
+                                <div class="author-stars">
                                     <div class="author">
                                          <h6  style="font-size: 14px; font-weight: bold;"> Starting from </h6>
                                     </div>
@@ -590,13 +485,6 @@
                                         </div>
                                            <button class="btn" style="background-color: rgb(249, 200, 37);"> Book Now</button>
                                     
-                                    <!-- <div class="stars">
-                                        <i class="fas fa-star active"></i>
-                                        <i class="fas fa-star active"></i>
-                                        <i class="fas fa-star active"></i>
-                                        <i class="fas fa-star active"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
