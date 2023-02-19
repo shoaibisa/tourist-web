@@ -29,6 +29,7 @@ const packageSchema = new Schema(
     packageImage: {
       type: String,
     },
+
     packageGuide: {
       type: Schema.Types.ObjectId,
       ref: "Guide",
