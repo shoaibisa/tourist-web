@@ -128,9 +128,13 @@ exports.viewBlog = (req, res, next) => {
     .populate("blogAuthor")
     .exec()
     .then((blog) => {
-      res.render("singleblog", {
+      if (blog.status === "approved") {
+        return res.redirect("/blog/" + blogId);
+      }
+      res.render("viewblog", {
         admin: req.admin,
         blog: blog,
+        isview: true,
         isTouristAuth: false,
         profileImage: false,
       });

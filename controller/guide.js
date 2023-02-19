@@ -180,16 +180,23 @@ exports.getBlogList = (req, res, next) => {
   });
 };
 
-exports.viewBlog = (req, res, next) => {
+exports.viewBlog = async (req, res, next) => {
   const blogId = req.body.blogId;
+
   Blog.findById(blogId)
     .populate("blogAuthor")
     .exec()
     .then((blog) => {
-      res.render("singleblog", {
+      if (blog.status === "approved") {
+        return res.redirect("/blog/" + blogId);
+      }
+      res.render("viewblog", {
         guide: req.guide,
         isTouristAuth: false,
+        isGuideAuth: false,
         blog: blog,
+        nextBlog: nextBlog,
+        prevBlog: prevBlog,
         profileImage: req.guide.guideImage,
       });
     });

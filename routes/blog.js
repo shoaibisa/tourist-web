@@ -28,4 +28,5 @@ router.post(
   isTouristLoggedIn,
   blogController.postLikeDislike
 );
+
 module.exports = router;

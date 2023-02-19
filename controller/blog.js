@@ -170,7 +170,7 @@ exports.getBlogById = async (req, res, next) => {
         guide: req.guide,
         tourist: req.tourist,
         blog: blog,
-
+        isview: false,
         nextBlog: nextBlog,
         prevBlog: prevBlog,
         likedilkeAction: likedilkeAction,
@@ -418,24 +418,6 @@ exports.postReply = (req, res, next) => {
   }
 };
 
-exports.getBlogBySearch = (req, res, next) => {
-  const search = req.body.search;
-  Blog.find({
-    $or: [
-      { blogTitle: { $regex: search, $options: "i" } },
-      { blogContent: { $regex: search, $options: "i" } },
-    ],
-  })
-    .sort({ createdAt: -1 })
-    .populate("blogAuthor")
-    .exec()
-    .then((blogs) => {
-      if (!blogs) {
-        return res.redirect("/blogs");
-      }
-      res.render("blogs", {
-        guide: req.guide,
-        blogs: blogs,
-      });
-    });
+exports.getBlogBySearch = async (req, res, next) => {
+  console.log(req.query);
 };
