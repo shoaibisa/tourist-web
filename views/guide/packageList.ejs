@@ -52,14 +52,22 @@
                     <td><%= routes %></td>
                     <td><%= packageList[i].packagePrice %></td>
                     <td><img src="/profile/<%= packageList[i].packageImage %>" width="50px" height="50px"></td>
-                    <td> <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >inProcess</button></td>
+                    <td>
+                    <% if(packageList[i].status==="pending") {%>
+                      <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >In Process</button>
+                     <% }else if(packageList[i].status==="approved"){ %>
+                     <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-success  text-white" >Approved</button>
+                     <% }else{ %>
+                     <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-danger  text-white" >DisApproved</button>
+                     <% } %>
+                    </td>
                     <td>6</td>
                     <td>4</td>
                     <td>5</td>
                     <td>
                       <div style="display: flex;">
-                        <button type="button" class="btn btn-block bg-gradient-success m-2" >view</button>
-                        <button type="button" class="btn btn-block bg-gradient-warning m-2">Edit</button>
+                        <a href="/package/<%=packageList[i]._id%>" class="btn btn-block bg-gradient-success m-2" >view</a>
+                        <!-- <button type="button" class="btn btn-block bg-gradient-warning m-2">Edit</button> -->
                         <form action="/guide/delete" method="post"><input name="pId" value="<%=packageList[i]._id%>" hidden />
                         <button type="submit" class="btn btn-block bg-gradient-danger m-2">Delete</button></form>
                       </div>

@@ -28,18 +28,29 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <% if(carousels.length){ %>
+                  <% for(var i=0; i<carousels.length; i++){ %>
                   <tr>
                     <td style="    width: 10%;">1</td>
                     <td  style="    width: 80%;">
-                        <img src="/img/b.jpeg" width="100px" alt=""/>
+                        <img src="/profile/<%=carousels[i].carouselImage %>" width="100px" alt="carausels"/>
                     </td >
                       <td style="    width: 10%;">
                       <div style="display: flex; ">
-                        <button   style=" border: none; width: 200px;"type="button" class="btn-sm btn-block bg-gradient-danger  text-white" >Delete</button>
+                        <form method="post" action="/admin/carousels/delete">
+                          <input type="hidden" name="id" value="<%=carousels[i]._id %>">
+                        <button   style=" border: none; width: 200px;" type="submit" class="btn-sm btn-block bg-gradient-danger  text-white" >Delete</button>
+                        </form>
                       </div>
                     </td>
                    
                   </tr>
+                  <% } %>
+                  <% }else{ %>
+                  <tr>
+                    <td colspan="3">No Carausel Found</td>
+                  </tr>
+                  <% } %>
                 </tbody>
               </table>
             </div>

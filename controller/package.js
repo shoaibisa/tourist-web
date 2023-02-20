@@ -14,6 +14,11 @@ exports.getAllPackages = (req, res, next) => {
 
 exports.getPackage = (req, res, next) => {
   const packageId = req.params.packageId;
+  Package.findByIdAndUpdate(
+    { _id: packageId },
+    { $inc: { packageViews: 1 } },
+    { new: true }
+  ).exec();
   Package.findById(packageId)
 
     .populate("packageGuide")

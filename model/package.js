@@ -23,6 +23,10 @@ const packageSchema = new Schema(
         type: String,
       },
     ],
+    packageViews: {
+      type: Number,
+      default: 0,
+    },
     status: {
       type: String,
       default: "pending",

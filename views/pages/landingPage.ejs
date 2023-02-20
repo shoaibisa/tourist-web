@@ -272,22 +272,26 @@ color: #666;
     <div class="container " style="max-width: 1400px;" >
       <h1 class="m-3">Treanding Package</h1>
       <div class="row">
-        <% for(var i=0; i<4; i++){ %>
+        <% if(packages.length>0){ %>
+        <% for(var i=0; i<packages.length; i++){ %>
         <!-- Blog Card Strat -->
         <div class="card blog_card m-3 p-3 ">
+          <a href="/package/<%=packages[i].id %>">
           <div class="card__header blog_header">
-          <img src="https://source.unsplash.com/600x500/?computer" alt="card__image" class="card__image img_blog" width="600">
+          <img src="/profile/<%=packages[i].packageImage %>" alt="card__image" class="card__image img_blog" width="600">
           </div>
           <div class="card__body blogcard_body">
           <!-- <span class="blog_tag tag-red">Technology</span> -->
-          <h6>What's new in 2022 Tech</h6>
+          <h6><%=packages[i].packageTitle %></h6>
           <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p> -->
           </div>
            <!-- <div class="blog_tag tag-blue ">
            <a href="" class="text-white">Read mode &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a> 
            </div>               -->
       </div>
+      </a>
        <!-- Blog Card End -->
+        <% } %>
         <% } %>
       </div>
       <section id="home">

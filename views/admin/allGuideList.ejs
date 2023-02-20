@@ -23,22 +23,34 @@
                   <tr>
                     <th>Id</th>
                     <th>Guide Name</th>
+                    <th>Guide Email</th>
                     <th>No.of Package</th>
                     <th>No.of Blog</th>
-                    <th>No.of Reservations</th>
+                    
                     <th>Date of joining</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <% if(guides.length>0){ %>
+                  <% for(var i=0; i<guides.length; i++){  %>
                   <tr>
-                    <td>1</td>
-                    <td>Anubhv Raj</td>
-                    <td>20</td>
-                    <td>150</td>
-                    <td>4</td>
-                    <td>12/10/2021</td>
+                   
+                    <td><%=i+1 %></td>
+                    <td><%=guides[i].guideName %></td>
+                    <td><%=guides[i].guideEmail %></td>
+                     <td><%=guides[i].packages.length %></td>
+                    <td><%=guides[i].blogs.length %></td>
+                    <% var eventDate = new Date(guides[i].createdAt); %>
+                     <%let dates =JSON.stringify(eventDate) %> <% dates = dates.slice(1,11) %> 
+                    <td><%=dates %></td>
                     
                   </tr>
+                  <% } %>
+                  <% }else{ %>
+                  <tr>
+                    <td colspan="3">No Guide Found</td>
+                  </tr>
+                  <% } %>
                 </tbody>
               </table>
             </div>

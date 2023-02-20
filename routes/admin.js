@@ -7,12 +7,19 @@ router.get("/login", isAmdinAuth, adminConroller.getLogin);
 router.post("/login", adminConroller.postLogin);
 
 router.get("/dashboard", isAdminLoggedin, adminConroller.getDashboard);
+//carousel
 router.get("/addcarousel", isAdminLoggedin, adminConroller.getAddCarousel);
 router.post(
   "/addcarouselimage",
   upload.single("cimage"),
   isAdminLoggedin,
   adminConroller.postAddCarousel
+);
+router.get("/carousels", isAdminLoggedin, adminConroller.getCarousels);
+router.post(
+  "/carousels/delete",
+  isAdminLoggedin,
+  adminConroller.deleteCarousel
 );
 
 //blogs
@@ -25,4 +32,8 @@ router.post("/blog/view", isAdminLoggedin, adminConroller.viewBlog);
 //packages
 router.get("/packages", isAdminLoggedin, adminConroller.getPackages);
 router.post("/package/action", isAdminLoggedin, adminConroller.actionPackage);
+
+//users
+router.get("/guides", isAdminLoggedin, adminConroller.getGuides);
+router.get("/tourists", isAdminLoggedin, adminConroller.getTourists);
 module.exports = router;
