@@ -26,6 +26,7 @@
                     <th>Blog Name</th>
                     <th>Posted By</th>
                     <th>Date</th>
+                    <th>Like/dislike</th>
                     <th>Status</th>
                     <th>View</th>
                     <th>Action</th>
@@ -40,6 +41,10 @@
                     <td><%=blogs[i].blogAuthor.guideName %></td>
                     <% var dates = blogs[i].createdAt %>
                     <td><%=dates %></td>
+                    <td>
+                      <i class="fas fa-thumbs-up"></i> <%=blogs[i].likes %> &nbsp;&nbsp;
+                      <i class="fas fa-thumbs-down"></i> <%=blogs[i].dislikes %>
+                    </td>
                     <td>
                       <%if(blogs[i].status==="pending") {%>
                       <button

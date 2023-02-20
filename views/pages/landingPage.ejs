@@ -38,7 +38,7 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 
 
 .blogcard_body {
-padding: 1rem;
+padding: 1rem 0rem 0rem 0rem;
 display: flex;
 flex-direction: column;
 gap: .5rem;
@@ -97,6 +97,117 @@ border-radius: 50%;
 .user__info_blog > small {
 color: #666;
 }
+
+
+
+#home{
+	width: 100%;
+	padding: 3rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.home-left{
+	height:100%;
+	position: relative;
+}
+
+.home-left img{
+	height: 350px;
+	width: 450px;
+	border-radius: 10px;
+}
+
+.home-right{
+	width: 50%;
+}
+
+.home-heading{
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+.home-para{
+	margin-bottom: 20px;
+}
+
+#collectibles{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-content:center;
+	flex-direction: column;
+	text-align:  center;
+	margin-bottom: 4rem;
+}
+
+.heading{
+	margin: 1rem auto;
+	text-align:  center;
+}
+
+.para {
+	margin: 1rem auto;
+}
+
+.num {
+    width: 70%;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.num-item {
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+    color: rgb(43, 126, 199);
+}
+
+#weather{
+    width: 80%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.weather-left {
+    width: 60%;
+    line-height: 2rem;
+}
+
+.weather-left h2 {
+    font-size: 2.4rem;
+}
+
+.weather-left p {
+    line-height: 1.5rem;
+    margin: 1rem 0;
+}
+
+
+.weather-right {
+    position: relative;
+    width: 35%;
+}
+
+.weather-right img {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    filter: drop-shadow(3px 4px 5px black);
+    transition: all 0.2s linear;
+}
+
+.weather-right img:hover {
+    transform: translateY(-5px);
+    filter: drop-shadow(5px 6px 7px black);
+}
+
 </style>
 <!-- slider start -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -161,29 +272,82 @@ color: #666;
     <div class="container " style="max-width: 1400px;" >
       <h1 class="m-3">Treanding Package</h1>
       <div class="row">
-        <% for(var i=0; i<10; i++){ %>
+        <% for(var i=0; i<4; i++){ %>
         <!-- Blog Card Strat -->
         <div class="card blog_card m-3 p-3 ">
           <div class="card__header blog_header">
-          <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image img_blog" width="600">
+          <img src="https://source.unsplash.com/600x500/?computer" alt="card__image" class="card__image img_blog" width="600">
           </div>
           <div class="card__body blogcard_body">
-          <span class="blog_tag tag-red">Technology</span>
-          <h5>What's new in 2022 Tech</h5>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p>
+          <!-- <span class="blog_tag tag-red">Technology</span> -->
+          <h6>What's new in 2022 Tech</h6>
+          <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus. Doloremque, nihil! At ea atque quidem!</p> -->
           </div>
-           <div class="blog_tag tag-blue text-white">
-             Read More
-           </div>              
+           <!-- <div class="blog_tag tag-blue ">
+           <a href="" class="text-white">Read mode &nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a> 
+           </div>               -->
       </div>
        <!-- Blog Card End -->
         <% } %>
       </div>
+      <section id="home">
+        <div class="home-left">
+            <img src="/img/b.jpeg" alt="" width="1500" height="2000">
+        </div>
+        <div class="home-right">
+            <h2 class="home-heading"> About Us </h2>
+            <p class="home-para"> Welcome to our tourism website! We are a team of passionate travel enthusiasts who love to explore and share our experiences with others. Our goal is to provide you with the best travel information and inspiration to help you plan your next adventure. Whether you're looking for a relaxing beach getaway, an adventurous trek through the mountains, or a cultural immersion in a new city, we've got you covered. Let us be your guide to the world of travel!
+                We also provide you with the best affordable travel packages in the province. To know more about the travel packages click on the below button!
+            </p>
+           
+        </div>
+     </section>
+    -  <section id="collectibles">
+        <h2 class= "heading">Antiques and Collectibles</h2>
+        <p>
+            
+            It's always a good idea to call ahead to confirm hours of operation and inventory before visiting any of these stores.
+        </p>
+        <div class="num">
+            <div class="num-item"><span>Empire Ammolite</span></div>
+            <div class="num-item"><span> Wonderland Sculpture</span></div>
+            <div class="num-item"><span>The Canadian Badlands</span></div>
+        </div>
+    </section>
+  
+    <section id="weather">
+        <div class="weather-left">
+            <h2> Climatic Conditions</h2>
+            <p>
+                Alberta has a humid continental climate with long, cold winters and short, warm summers. Temperatures can vary widely throughout the year, with average temperatures ranging from -10°C (14°F) in January to 17°C (63°F) in July. The province receives a moderate amount of precipitation, with the majority falling during the summer months. Alberta is also known for its frequent chinook winds, which can cause sudden, dramatic temperature increases during the winter months. Additionally, the province experiences occasional severe weather events such as thunderstorms, tornadoes, and blizzards.
+            </p>
+            </div>
+            <div class="weather-right">
+            <ul>
+                <a class="weatherwidget-io" href="https://forecast7.com/en/53d93n116d58/alberta/" data-label_1="ALBERTA" data-label_2="WEATHER" data-font="Times New Roman" data-icons="Climacons Animated" data-theme="mountains" >ALBERTA WEATHER</a>
+  
+            </ul>
+        </div>
+  
+        <div class="weather-right">
+  
+        </div>
+  
+    </section>
     </div>
   </div>
 </div>
 <!-- Treanding  Package End -->
 <!-- Footer Start -->
 <%- include("../frontviewComm/footer.ejs") %>
+<script>
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0];
+    if(!d.getElementById(id)){js=d.createElement(s);
+        js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
+  fjs.parentNode.insertBefore(js,fjs);}
+  }
+  (document,'script','weatherwidget-io-js');
+  </script>
 <!-- Footer End -->
 <%- include("../conn/footer.ejs") %>

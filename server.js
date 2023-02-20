@@ -126,6 +126,19 @@ app.get("/packageDetails", (req, res) => {
   res.render("package/packageDetails", { guide: req.guide });
 });
 
+app.get("/login_as", (req, res) => {
+  res.render("pages/allLogin");
+});
+app.get("/admin/carausel_list", (req, res) => {
+  res.render("admin/carauselList", { admin: req.admin });
+});
+app.get("/admin/allguide", (req, res) => {
+  res.render("admin/allGuideList", { admin: req.admin });
+});
+app.get("/admin/alltourist", (req, res) => {
+  res.render("admin/allTourist", { admin: req.admin });
+});
+
 app.use((req, res) => {
   res.status(404).render("pages/error404");
 });
