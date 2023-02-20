@@ -32,26 +32,60 @@
                   </tr>
                 </thead>
                 <tbody>
-                  
+                  <% if(packages.length>0){ %>
+                  <% for(var i=0;i<packages.length;i++){ %>
                   <tr>
-                    <td>1</td>
-                    <td>ABCD</td>
-                    <td>Anubhav Raj</td>
-                    <td>12/01/2012</td>
-                    <td> <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >inProcess</button></td>
+                    <td><%=i+1%> </td>
+                    <td><%=packages[i].packageTitle %></td>
+                    <td><%=packages[i].packageGuide.guideName %></td>
+                    <% var eventDate = new Date(packages[i].createdAt); %>
+                     <%let dates =JSON.stringify(eventDate) %> <% dates = dates.slice(1,11) %> 
+                    <td><%=dates%></td>
+                   
+                    <td>
+                      <% if(packages[i].status==="pending") {%>
+                       <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >In Process</button>
+                      <% }else if(packages[i].status==="approved"){ %>
+                      <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-success  text-white" >Approved</button>
+                      <% }else{ %>
+                      <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-danger  text-white" >DisApproved</button>
+                      <% } %>
+                      </td>
                     <td>
                       <div style="display: flex; ">
-                        <button   style=" border: none;"type="button" class="btn-sm btn-block bg-gradient-warning  text-white" >View</button>
+
+                        <a   style=" border: none;" href="/package/<%=packages[i]._id%>" class="btn-sm btn-block bg-gradient-warning  text-white" >View</a>
                       </div>
                     </td>
                     <td>
                         <div style="display: flex;justify-content: space-evenly; ">
-                             <div class=" mr-3">  <button  style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-success  text-white "  > Approved</button></div>
-                              <div><button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-danger  text-white" > DisApproved</button>
+                          <% if(packages[i].status==="pending"){ %>
+                            <div class=" mr-3">
+                            <form action="/admin/package/action" method="post"> 
+                              <input type="hidden" name="packageId" value="<%=packages[i]._id%>">
+                              <input type="hidden" name="action" value="approved">
+                              <button  style=" border: none;" type="submit" class="btn-sm btn-block bg-gradient-success  text-white "  > Approved</button>
+                            </form>
+                          </div>
+                              <div>
+                                <form action="/admin/package/action" method="post"> 
+                                  <input type="hidden" name="packageId" value="<%=packages[i]._id%>">
+                                  <input type="hidden" name="action" value="disapproved">
+                                  <button  style=" border: none;" type="submit" class="btn-sm btn-block bg-gradient-danger  text-white" > DisApproved</button>
+ 
                               </div>
                           </div>
+                          <% }else { %>
+                            <p><%=packages[i].status %></p>
+                          <% } %>
                     </td>
                   </tr>
+                  <% } %>
+                  <% } else{%>
+                  <tr>
+                    <td colspan="7">No Package Found</td>
+                  </tr>
+                  <% } %>
                 </tbody>
               </table>
             </div>

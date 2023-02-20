@@ -106,11 +106,12 @@ exports.abortBlog = (req, res, next) => {
 };
 
 //packages
-exports.approvePackage = (req, res, next) => {
+exports.actionPackage = (req, res, next) => {
   const packageId = req.body.packageId;
+  const action = req.body.action;
   Package.findByIdAndUpdate(packageId)
     .then((pack) => {
-      pack.status = "approved";
+      pack.status = action;
       return pack.save();
     })
     .then((result) => {

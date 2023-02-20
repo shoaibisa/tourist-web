@@ -24,4 +24,5 @@ router.post("/blog/view", isAdminLoggedin, adminConroller.viewBlog);
 
 //packages
 router.get("/packages", isAdminLoggedin, adminConroller.getPackages);
+router.post("/package/action", isAdminLoggedin, adminConroller.actionPackage);
 module.exports = router;

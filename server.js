@@ -25,6 +25,7 @@ const adminRoute = require("./routes/admin");
 const touristRoute = require("./routes/tourist");
 const publicRoute = require("./routes/publicCon");
 const blogRoute = require("./routes/blog");
+const packageRoute = require("./routes/package");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -105,6 +106,7 @@ app.get("/recoverpassword", (req, res) => {
 app.use("/guide", guideRoute);
 app.use("/admin", adminRoute);
 app.use("/tourist", touristRoute);
+app.use(packageRoute);
 app.use(blogRoute);
 
 app.get("/profile", (req, res) => {

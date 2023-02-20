@@ -23,6 +23,10 @@ const packageSchema = new Schema(
         type: String,
       },
     ],
+    status: {
+      type: String,
+      default: "pending",
+    },
     packagePrice: {
       type: String,
     },
