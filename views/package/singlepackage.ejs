@@ -48,16 +48,25 @@
    <div class="card  mt-3 ">
       <div class="card-body" style="display: flex; justify-content: space-evenly;">
          <div class="package_image" >
-         <img class="package_image_img" src="https://i.ibb.co/CWYHcrL/product1.jpg" alt="">
+         <img class="package_image_img" src="/profile/<%=pack.packageImage %>" alt="">
          </div>
          <div class="package_content">
                <h5 class="heading_package">
-                  KARNATAKA - BHARATH GAURAV KASHI DARSHAN (KABG01)
+                <%= pack.packageTitle %>
                </h5>
-               <div class="package_location"><i class="fas fa-location-arrow"></i>AYODHYA, PRAYAGRAJ, VARANASI</div>
-               <div class="package_dureastion"> <i class="fas fa-clock"></i>7 Nights/8 Days</div>
+               <div class="package_location"><i class="fas fa-location-arrow">
+                  <% var locations = "" %>
+                  <% pack.packageRoutes.forEach(function(location){ %>
+                     <% locations += location + ", " %>
+                  <% }) %>
+               <%=locations %>
+               </i></div>
+
+               <div class="package_dureastion"> <i class="fas fa-clock"></i><%=pack.packageDuration %></div>
                <div class="package_para">
-                  <p class="package_details">Govt of Karnataka, in association with IRCTC Ltd. offers “Karnataka Bharat Gaurav Kashi Darshan” theme based pilgrimage tour by Bharat Gaurav Tourist train covering the prominent sacred places of divine city Varanasi, Ayodhya & Prayagraj in a 08 days journey. "Special Discount of Rs. 5000/- per person by Govt. of Karnataka"</p>
+                  <p class="package_details">
+                     <%= pack.packageDescription %>
+                  </p>
                </div>
          </div>
          <div class="author-stars" >
@@ -65,7 +74,7 @@
                <h6  style="font-size: 14px; font-weight: bold;"> Starting from </h6>
             </div>
                <div class="type-price">
-                  <span class="price " style="font-weight: bold;"><span class="dollar">$</span>14</span>
+                  <span class="price " style="font-weight: bold;"><span class="dollar">$</span><%=pack.packagePrice %></span>
                </div>
                   <button class="btn" style="background-color: rgb(249, 200, 37);"> Book Now</button>
       </div>
@@ -81,8 +90,9 @@
          </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-         <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-home-tab">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos explicabo quo quasi eaque beatae odit earum perspiciatis cum perferendis dignissimos ex totam, itaque, minus autem architecto at debitis. Corporis, eius.</div>
-         <div class="tab-pane fade" id="nav-Itinerary" role="tabpanel" aria-labelledby="nav-profile-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolores voluptates, totam recusandae blanditiis labore cupiditate odio aperiam inventore voluptas quo ut quod molestias molestiae officia temporibus obcaecati consequatur atque.</div>
+         <div class="tab-pane fade show active" id="nav-overview" role="tabpanel" aria-labelledby="nav-home-tab">
+         <%=pack.packageDescription %>  
+         </div>
          <div class="tab-pane fade" id="nav-Inclusion" role="tabpanel" aria-labelledby="nav-contact-tab">
             <h4 class="terms_heading mt-2" style="color:rgb(30, 44, 44)">SERVICES INCLUSIONS:</h4>
             <ul class="pl-5 pr-5">

@@ -458,21 +458,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        
-                    <% for(var i=0; i<10; i++){ %>
+                    <% if(packages.length>0){ %>
+                    <% for(var i=0; i<packages.length; i++){ %>
                         <!-- Single Product -->     
                         <div class="col-md-6 col-lg-12">
                             <div class="single-product">
                                 <div class="img-part">
-                                    <img src="https://i.ibb.co/CWYHcrL/product1.jpg" alt="">
+                                    <img src="/profile/<%=packages[i].packageImage%>" alt="">
         
                                 </div>
                                 <div class="product-discraption">
                                     <span class="tag featured">Featured</span>
-                                    <h3 class="title"><a href="#">Vikinger - Social Network and Marketplace PSD Template</a></h3>
-                                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla tristique tincidunt...</p>
+                                    <h3 class="title"><a href="/package/<%=packages[i]._id%>"><%=packages[i].packageTitle %></a></h3>
+                                    <p class="description"><%=packages[i].packageDescription %></p>
                                     <div class="type-price">
-                                        <a href="/packageDetails" class="type">Details</a>
+                                        <a href="/package/<%=packages[i]._id%>" class="type">Details</a>
                                         <!-- <span class="price"><span class="dollar">$</span>14</span> -->
                                     </div>
                                 </div>
@@ -481,7 +481,7 @@
                                          <h6  style="font-size: 14px; font-weight: bold;"> Starting from </h6>
                                     </div>
                                          <div class="type-price">
-                                            <span class="price " style="font-weight: bold;"><span class="dollar">$</span>14</span>
+                                            <span class="price " style="font-weight: bold;"><span class="dollar">$</span><%=packages[i].packagePrice %></span>
                                         </div>
                                            <button class="btn" style="background-color: rgb(249, 200, 37);"> Book Now</button>
                                     
@@ -490,6 +490,9 @@
                         </div>
                         <!-- / End Single Product -->
                          <% } %>
+                            <% }else{ %>
+                                <h3>No Packages Found</h3>
+                            <% } %>
                         <!-- Single Product -->
                     </div>
                 </div>
