@@ -367,7 +367,7 @@
 <%- include("../frontviewComm/navbar.ejs") %>
   
    <div class="container-fluid row">
-       <div class="col-lg-3">
+       <div class="col-lg-3 mt-5">
         <div class=" card mt-3 ">
             <div class="row p-2">
               <div class="col-md-12">
@@ -448,7 +448,7 @@
           
            
         </div>
-         <div class="col-lg-9">
+         <div class="col-lg-9 mt-5">
 
             <section class="section-products">
                 <div class="container">
@@ -463,11 +463,11 @@
                         <!-- Single Product -->     
                         <div class="col-md-6 col-lg-12">
                             <div class="single-product">
-                                <div class="img-part">
+                                <div class="img-part col-md-6 col-lg-2">
                                     <img src="/profile/<%=packages[i].packageImage%>" alt="">
         
                                 </div>
-                                <div class="product-discraption">
+                                <div class="product-discraption col-lg-7">
                                     <span class="tag featured">Featured</span>
                                     <h3 class="title"><a href="/package/<%=packages[i]._id%>"><%=packages[i].packageTitle %></a></h3>
                                     <p class="description"><%=packages[i].packageDescription %></p>
@@ -476,7 +476,7 @@
                                         <!-- <span class="price"><span class="dollar">$</span>14</span> -->
                                     </div>
                                 </div>
-                                <div class="author-stars">
+                                <div class="author-stars col-lg-3">
                                     <div class="author">
                                          <h6  style="font-size: 14px; font-weight: bold;"> Starting from </h6>
                                     </div>
@@ -491,7 +491,7 @@
                         <!-- / End Single Product -->
                          <% } %>
                             <% }else{ %>
-                                <h3>No Packages Found</h3>
+                                <h3 class="m-3">No Packages Found</h3>
                             <% } %>
                         <!-- Single Product -->
                     </div>

@@ -43,8 +43,8 @@
                   <% for(var i=0; i<packageList.length; i++){  %>
                   <tr>
                     <td><%=i %></td>
-                    <td><%= packageList[i].packageTitle %></td>
-                    <td><%= packageList[i].packageDescription %></td>
+                    <td><%= packageList[i].packageTitle %></td>            
+                    <td><%= packageList[i].packageDescription.substring(0, 100) %>...</td>
                     <% var routes ="";%>
                     <% packageList[i].packageRoutes.forEach(pr=>{ %>
                     <% routes += pr + ", ";%>
