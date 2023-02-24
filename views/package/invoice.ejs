@@ -1,0 +1,82 @@
+<%- include("../conn/header.ejs") %>
+<%- include("../frontviewComm/navbar.ejs") %>
+<style>
+    .invoice {
+        background: #ffffff;
+        border-bottom: 15px solid #1daff8;
+        border-top: 15px solid #1E1F23;
+        margin-top: 8rem;
+        margin-bottom: 30px;
+        padding: 40px 30px !important;
+        position: relative;
+        box-shadow: 0 1px 21px #808080;
+        font-size:16px;
+        justify-content: center;
+    }
+
+    .invoice thead {
+		background: #1E1F23;
+        color: #fff;
+		}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 invoice">
+            <div class="col-md-12">
+               <div class="row" style="justify-content: end;">
+                    <div class="col-md-3 text-xs-left">
+                        <h4 style="color: #1daff8;"><strong>Wanderlust</strong></h4>
+                        <p>54, North Road</p>
+                        <p>+1 888 455 6677</p>
+                        <p>mail@example.com</p>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12 text-xs-center">
+                        <h2>INVOICE</h2>
+                        <h5>00000846382</h5>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><h5>Description</h5></th>
+                                <th><h5>Package No</h5></th>
+                                <th><h5>Amount</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td class="col-md-7">Manali</td>
+                                <td class="col-md-2">X 5</td>
+                                <td class="col-md-3"><i class="fa fa-usd" aria-hidden="true"></i> 759,00 </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="text-xs-right"><p><strong>Total Amount: </strong> </p></td>
+                                <td > </td>
+                                <td><p><strong><i class="fa fa-usd" aria-hidden="true"></i> 2569,00 </strong></p></td>
+                            </tr>
+                            <tr style="color: #1daff8;">
+                                <td class="text-xs-right"><h4><strong>Total:</strong></h4></td>
+                                 <td></td>
+                                <td class="text-xs-left"><h4><strong>$ 2365,00 </strong></h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="col-md-12">
+                        <p><b>Date :</b> 28 June 2017</p>        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

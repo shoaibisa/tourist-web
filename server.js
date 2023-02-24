@@ -138,6 +138,13 @@ app.get("/admin/allguide", (req, res) => {
 app.get("/admin/alltourist", (req, res) => {
   res.render("admin/allTourist", { admin: req.admin });
 });
+app.get("/booking", (req, res) => {
+  res.render("package/booking_details", { admin: req.admin });
+});
+
+app.get("/invoice", (req, res) => {
+  res.render("package/invoice", { admin: req.admin });
+});
 
 app.use((req, res) => {
   res.status(404).render("pages/error404");
