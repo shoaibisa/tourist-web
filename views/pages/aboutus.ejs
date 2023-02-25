@@ -1,0 +1,58 @@
+<%- include("../conn/header.ejs") %>
+ <style>
+    #home{
+	width: 100%;
+	padding: 3rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+     padding-top: 6rem;
+    padding-bottom: 13rem;
+  
+}
+
+.home-left{
+	height:100%;
+	position: relative;
+}
+
+.home-left img{
+	height: 350px;
+	width: 450px;
+	border-radius: 10px;
+}
+
+.home-right{
+	width: 50%;
+}
+
+.home-heading{
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+.home-para{
+	margin-bottom: 20px;
+}
+
+ </style>
+<%- include("../frontviewComm/navbar.ejs") %>
+
+<div class="container">
+         <section id="home" >
+        <div class="home-left">
+            <img src="/img/b.jpeg" alt="" width="1500" height="2000">
+        </div>
+        <div class="home-right">
+            <h2 class="home-heading"> About Us </h2>
+            <p class="home-para"> Welcome to our tourism website! We are a team of passionate travel enthusiasts who love to explore and share our experiences with others. Our goal is to provide you with the best travel information and inspiration to help you plan your next adventure. Whether you're looking for a relaxing beach getaway, an adventurous trek through the mountains, or a cultural immersion in a new city, we've got you covered. Let us be your guide to the world of travel!
+                We also provide you with the best affordable travel packages in the province. To know more about the travel packages click on the below button!
+            </p>
+           
+        </div>
+     </section>
+</div>
+
+
+<%- include("../frontviewComm/footer.ejs") %>

@@ -146,6 +146,9 @@ app.get("/invoice", (req, res) => {
   res.render("package/invoice", { admin: req.admin });
 });
 
+app.get("/about", (req, res) => {
+  res.render("pages/aboutus", { admin: req.admin });
+});
 app.use((req, res) => {
   res.status(404).render("pages/error404");
 });
