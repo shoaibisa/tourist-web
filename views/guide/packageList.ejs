@@ -31,10 +31,8 @@
                     <th>Price</th>
                     <th>Image</th>
                     <th>Status</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    
-                    <th>Sheet</th>
+                    <th>Booking Details</th>
+                    <th>Sloat</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -61,15 +59,16 @@
                      <button   style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-danger  text-white" >DisApproved</button>
                      <% } %>
                     </td>
-                    <td>6</td>
-                    <td>4</td>
+                    <td>
+                      <button style=" border: none;" type="button" class="btn-sm btn-block bg-gradient-gray  text-white" >View</button>
+                    </td>
                     <td>5</td>
                     <td>
                       <div style="display: flex;">
-                        <a href="/package/<%=packageList[i]._id%>" class="btn btn-block bg-gradient-success m-2" >view</a>
+                        <a href="/package/<%=packageList[i]._id%>" class="btn btn-block bg-gradient-success m-2 text-white" >view</a>
                         <!-- <button type="button" class="btn btn-block bg-gradient-warning m-2">Edit</button> -->
                         <form action="/guide/delete" method="post"><input name="pId" value="<%=packageList[i]._id%>" hidden />
-                        <button type="submit" class="btn btn-block bg-gradient-danger m-2">Delete</button></form>
+                        <button type="submit" class="btn btn-block bg-gradient-danger m-2 text-white">Delete</button></form>
                       </div>
                       </td>
                   </tr>

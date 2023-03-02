@@ -125,6 +125,9 @@ app.get("/allPackage", (req, res) => {
 app.get("/packageDetails", (req, res) => {
   res.render("package/packageDetails", { guide: req.guide });
 });
+app.get("/guide/booking", (req, res) => {
+  res.render("guide/booking_details", { guide: req.guide });
+});
 
 app.get("/login_as", (req, res) => {
   res.render("pages/allLogin");

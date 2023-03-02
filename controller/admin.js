@@ -6,12 +6,14 @@ const Guide = require("../model/guide");
 const Tourist = require("../model/tourist");
 const fs = require("fs");
 const fileHelper = require("../util/file");
+
 exports.getDashboard = (req, res, next) => {
   res.render("admin/dashboard", {
     admin: req.admin,
     profileImage: false,
   });
 };
+
 exports.getLogin = (req, res, next) => {
   res.render("admin/login");
 };
@@ -35,6 +37,7 @@ exports.getAddCarousel = (req, res, next) => {
     profileImage: false,
   });
 };
+
 exports.postAddCarousel = (req, res, next) => {
   const cimage = req.file;
   if (!cimage) {
@@ -61,6 +64,7 @@ exports.getCarousels = (req, res, next) => {
     });
   });
 };
+
 exports.deleteCarousel = (req, res, next) => {
   const carouselId = req.body.id;
   MainPage.findByIdAndRemove(carouselId)
@@ -75,6 +79,7 @@ exports.deleteCarousel = (req, res, next) => {
       console.log(err);
     });
 };
+
 
 //blogs
 exports.getBlogs = (req, res, next) => {
@@ -118,6 +123,7 @@ exports.approveBlog = (req, res, next) => {
       console.log(err);
     });
 };
+
 exports.abortBlog = (req, res, next) => {
   const blogId = req.body.blogId;
   Blog.findByIdAndUpdate(blogId)
